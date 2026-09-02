@@ -336,28 +336,6 @@
     .grp p{grid-column:2}
   }
 
-  /* ====== selected engagements ====== */
-  .cases{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line)}
-  .cases .case{
-    padding:2.4rem 1.8rem 2.6rem;border-inline-end:1px solid var(--line);position:relative;
-    display:flex;flex-direction:column;gap:.95rem;min-height:320px;
-    background:linear-gradient(180deg,transparent,rgba(28,24,21,.55));
-  }
-  .cases .case:last-child{border-inline-end:none}
-  .cases .case::after{content:"";position:absolute;top:0;inset-inline-start:0;height:1px;width:0;background:var(--copper);transition:width .6s cubic-bezier(.16,1,.3,1)}
-  .cases .case:hover::after{width:100%}
-  .cases .meta{font-family:var(--mono);font-size:var(--t-xs);letter-spacing:.14em;text-transform:uppercase;color:var(--copper-2)}
-  html[dir="rtl"] .cases .meta{font-family:var(--ar-body);letter-spacing:.05em;font-size:var(--t-sm)}
-  .cases h3{font-size:var(--t-h3);color:var(--sand)}
-  .cases p{font-size:var(--t-md);line-height:1.65;color:rgba(239,232,221,.72)}
-  .cases .out{margin-top:auto;padding-top:1.2rem;border-top:1px solid var(--line);
-    font-family:var(--mono);font-size:var(--t-sm);letter-spacing:.06em;color:var(--copper-2)}
-  html[dir="rtl"] .cases .out{font-family:var(--ar-body);letter-spacing:0;font-size:var(--t-md)}
-  @media (max-width:900px){
-    .cases{grid-template-columns:1fr;border-top:none}
-    .cases .case{border-inline-end:none;border-top:1px solid var(--line);min-height:0}
-  }
-
   /* ====== marquee ====== */
   .serve{padding-block:0;padding-inline:var(--rail) 0 !important;overflow:hidden;border-block:1px solid var(--line)}
   .serve .intro{padding:clamp(4rem,9vw,7rem) var(--px) 2.5rem var(--px);max-width:calc(1320px + var(--px)*2);margin-inline:auto}
@@ -819,43 +797,11 @@
   </div>
 </section>
 
-<!-- SELECTED ENGAGEMENTS -->
-<!-- Three engagements, one per room (I, II, III), in ledger order.
-     Client names withheld; sector and year shown. Confirm the details with
-     the client before each is treated as a matter of record. -->
-<section id="work">
-  <p class="idx rv"><span class="en-only">05 — Selected engagements</span><span class="ar-only">٠٥ — نماذج من أعمالنا</span></p>
-  <h2 class="h2 rv-mask"><span class="en-only">Work we can talk about.</span><span class="ar-only">أعمالٌ يمكننا الحديث عنها.</span></h2>
-  <p class="body rv d1" style="max-width:60ch;margin-inline:0"><span class="en-only">Anonymised by design. Client names stay withheld — the work is described as precisely as confidentiality allows.</span><span class="ar-only">مجهّلة عمدًا. أسماء العملاء محجوبة، والعمل موصوفٌ بأدقّ ما تسمح به السرية.</span></p>
-  <div class="cases stagger">
-    <article class="case">
-      <span class="meta"><span class="en-only">Financial Services · 2025</span><span class="ar-only">الخدمات المالية · ٢٠٢٥</span></span>
-      <h3><span class="en-only">A licence granted, a reputation not yet built.</span><span class="ar-only">ترخيصٌ مُنح، وسمعةٌ لم تُبنَ بعد.</span></h3>
-      <p><span class="en-only">A regional financial firm had just been licensed to operate in the Kingdom, but was unknown to the institutions and the media that shape how any new entrant gets read.</span><span class="ar-only">شركة مالية إقليمية حصلت للتو على ترخيص العمل في المملكة، لكنها مجهولة لدى الجهات والمنصات التي تُشكّل صورة أي وافد جديد.</span></p>
-      <p><span class="en-only">We built the introduction plan and ran it — positioning and messaging in both languages, a sequence of institutional meetings, and preparation of the leadership for its first public appearances.</span><span class="ar-only">وضعنا خطة التعريف وأدرناها — التموضع والرسائل باللغتين، وسلسلة لقاءات مؤسسية، وتهيئة القيادة لأول ظهور علني.</span></p>
-      <span class="out"><span class="en-only">Institutional relationships opened · first year of coverage on message</span><span class="ar-only">انفتاح علاقات مؤسسية · تغطية السنة الأولى وفق الرسائل</span></span>
-    </article>
-    <article class="case">
-      <span class="meta"><span class="en-only">Real Estate Development · 2024</span><span class="ar-only">التطوير العقاري · ٢٠٢٤</span></span>
-      <h3><span class="en-only">A landowner and a developer who never met.</span><span class="ar-only">مالكُ أرضٍ ومطوّرٌ لم يلتقيا قط.</span></h3>
-      <p><span class="en-only">A family holding owned a well-placed Riyadh site it did not want to sell outright, and had no route to developers able to structure a partnership rather than a purchase.</span><span class="ar-only">مجموعة عائلية تملك أرضًا في موقع مميز بالرياض لا ترغب في بيعها، ولا تملك طريقًا إلى مطوّرين قادرين على هيكلة شراكة بدل الشراء.</span></p>
-      <p><span class="en-only">We identified the developers whose pipeline actually fit the site, made the approach discreetly on the family’s behalf, and stayed in the room through the commercial discussions.</span><span class="ar-only">حدّدنا المطوّرين الذين تناسب محافظهم الموقع فعلًا، وتولّينا التواصل بسرية نيابة عن العائلة، وبقينا في الغرفة حتى نهاية المباحثات التجارية.</span></p>
-      <span class="out"><span class="en-only">Development partnership agreed · ownership retained</span><span class="ar-only">اتفاق شراكة تطويرية · الاحتفاظ بالملكية</span></span>
-    </article>
-    <article class="case">
-      <span class="meta"><span class="en-only">Industrial Manufacturing · 2025</span><span class="ar-only">الصناعات التحويلية · ٢٠٢٥</span></span>
-      <h3><span class="en-only">A European manufacturer with no footing in the Kingdom.</span><span class="ar-only">مُصنِّعٌ أوروبيٌّ بلا موطئ قدمٍ في المملكة.</span></h3>
-      <p><span class="en-only">A mid-size European industrial group wanted to supply into Saudi projects, with no local entity, no references, and no read on how procurement decisions were actually taken.</span><span class="ar-only">مجموعة صناعية أوروبية متوسطة الحجم أرادت التوريد لمشاريع سعودية، دون كيان محلي أو مرجعيات أو فهمٍ لآلية اتخاذ قرارات الشراء.</span></p>
-      <p><span class="en-only">We acted as their local representation for nine months — mapping the relevant buyers, arranging introductions to three qualified partners, and briefing the team before each meeting on protocol and expectation.</span><span class="ar-only">تولّينا تمثيلها محليًا تسعة أشهر — حصر الجهات المشترية، وترتيب التعارف مع ثلاثة شركاء مؤهلين، وتهيئة الفريق قبل كل اجتماع من حيث البروتوكول والتوقعات.</span></p>
-      <span class="out"><span class="en-only">Local partner appointed · first supply agreement signed</span><span class="ar-only">تعيين شريك محلي · توقيع أول اتفاقية توريد</span></span>
-    </article>
-  </div>
-</section>
 
 <!-- WHO WE SERVE -->
 <section class="serve" id="serve">
   <div class="intro">
-    <p class="idx rv"><span class="en-only">06 — Who we serve</span><span class="ar-only">٠٦ — من نخدم</span></p>
+    <p class="idx rv"><span class="en-only">05 — Who we serve</span><span class="ar-only">٠٥ — من نخدم</span></p>
     <p class="body rv d1" style="max-width:64ch;font-size:1.05rem"><span class="en-only">Our services are designed for companies, investors, developers, entrepreneurs, family businesses, international entities entering Saudi Arabia, and clients seeking trusted introductions, representation, commercial opportunities, or strategic relationship support.</span><span class="ar-only">صُممت خدماتنا للشركات والمستثمرين والمطورين ورواد الأعمال والشركات العائلية والجهات الدولية الراغبة في دخول المملكة العربية السعودية، وللعملاء الباحثين عن التعريفات الموثوقة والتمثيل والفرص التجارية والدعم في بناء العلاقات الاستراتيجية.</span></p>
   </div>
   <div class="pair">
@@ -881,7 +827,7 @@
 <!-- APPROACH -->
 <section class="approach rv-fig" id="approach">
   <div class="bg" aria-hidden="true"><picture><source type="image/webp" srcset="images/approach-table.webp"><img src="images/approach-table.jpg" width="1448" height="1086" alt="" loading="lazy" decoding="async"></picture></div>
-  <p class="idx rv"><span class="en-only">07 — Approach</span><span class="ar-only">٠٧ — منهجيتنا</span></p>
+  <p class="idx rv"><span class="en-only">06 — Approach</span><span class="ar-only">٠٦ — منهجيتنا</span></p>
   <h2 class="h2 rv-mask"><span class="en-only">Five principles. No exceptions.</span><span class="ar-only">خمسة مبادئ. بلا استثناء.</span></h2>
   <div class="grid5 stagger">
     <div class="cell"><span class="k">I</span><h3><span class="en-only">Discretion</span><span class="ar-only">الخصوصية</span></h3><p><span class="en-only">Sensitive engagements are handled with care and professional confidentiality.</span><span class="ar-only">التعامل مع الملفات الحساسة بعناية ومهنية وسرية.</span></p></div>
@@ -894,7 +840,7 @@
 
 <!-- WHY -->
 <section class="why">
-  <p class="idx rv"><span class="en-only">08 — Why Dar Qash</span><span class="ar-only">٠٨ — لماذا دار قاش</span></p>
+  <p class="idx rv"><span class="en-only">07 — Why Dar Qash</span><span class="ar-only">٠٧ — لماذا دار قاش</span></p>
   <ol class="stagger">
     <li><span class="en-only">Access to high-level networks across Saudi Arabia and international markets</span><span class="ar-only">شبكة علاقات رفيعة المستوى داخل المملكة والأسواق الدولية</span></li>
     <li><span class="en-only">The ability to facilitate relevant introductions</span><span class="ar-only">القدرة على تسهيل التعريفات المناسبة</span></li>
@@ -915,7 +861,7 @@
 
 <!-- CONTACT -->
 <section class="contact" id="contact">
-  <p class="idx rv"><span class="en-only">09 — Begin</span><span class="ar-only">٠٩ — ابدأ</span></p>
+  <p class="idx rv"><span class="en-only">08 — Begin</span><span class="ar-only">٠٨ — ابدأ</span></p>
   <div class="two">
     <div>
       <h2 class="h2 rv-mask"><span class="en-only">Which room do you need to be in?</span><span class="ar-only">أي غرفةٍ تحتاج أن تكون فيها؟</span></h2>
@@ -1171,7 +1117,7 @@
     addEventListener('mouseleave',()=>c.classList.remove('on'));
     let raf=null;function loop(){cx+=(x-cx)*.22;cy+=(y-cy)*.22;c.style.transform=`translate3d(${cx}px,${cy}px,0) translate(-50%,-50%)`+(c.classList.contains('big')?' scale(3.2)':'');if(Math.abs(x-cx)+Math.abs(y-cy)>.3)raf=requestAnimationFrame(loop);else raf=null;}
     addEventListener('mousemove',()=>{if(!raf)raf=requestAnimationFrame(loop)},{passive:true});
-    document.querySelectorAll('a,button,.svc,.cell,.case,input,select,textarea').forEach(el=>{el.addEventListener('mouseenter',()=>c.classList.add('big'));el.addEventListener('mouseleave',()=>c.classList.remove('big'));});
+    document.querySelectorAll('a,button,.svc,.cell,input,select,textarea').forEach(el=>{el.addEventListener('mouseenter',()=>c.classList.add('big'));el.addEventListener('mouseleave',()=>c.classList.remove('big'));});
   }
 </script>
 </body>
