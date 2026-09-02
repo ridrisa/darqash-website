@@ -244,7 +244,7 @@
     .hero h1{font-size:2.5rem;line-height:1.1}
     html[dir="rtl"] .hero h1{font-size:2.1rem;line-height:1.35}
     .h2{font-size:2.1rem}
-    .svc h3{font-size:1.45rem}
+    .svc h3{font-size:1.2rem}
     .track > span{font-size:2rem}
     footer .big{font-size:2.4rem}
   }
@@ -305,20 +305,57 @@
   .ledger{border-top:1px solid var(--line)}
   .svc{
     display:grid;grid-template-columns:5rem minmax(0,1.2fr) minmax(0,1fr);gap:1.4rem 2.5rem;
-    padding:2rem 0;border-bottom:1px solid var(--line);position:relative;
+    padding:1.35rem 0;border-bottom:1px solid var(--line);position:relative;
     transition:background .35s;
   }
   .svc::before{content:"";position:absolute;bottom:-1px;inset-inline-start:0;height:1px;width:0;background:var(--copper);transition:width .6s cubic-bezier(.2,.7,.2,1)}
   .svc:hover::before{width:100%}
   .svc:hover{background:linear-gradient(90deg,rgba(179,160,143,.06),transparent)}
   .svc .n{font-family:var(--mono);font-size:var(--t-sm);color:var(--copper-2);padding-top:.7rem;letter-spacing:.08em}
-  .svc h3{font-size:clamp(1.5rem,2.6vw,2.2rem);transition:transform .45s cubic-bezier(.2,.7,.2,1)}
+  .svc h3{font-size:clamp(1.2rem,1.95vw,1.6rem);color:var(--sand);transition:transform .45s cubic-bezier(.2,.7,.2,1)}
   .svc:hover h3{transform:translateX(8px)}
   html[dir="rtl"] .svc:hover h3{transform:translateX(-8px)}
-  .svc p{color:rgba(239,232,221,.72);font-size:var(--t-md);line-height:1.65;padding-top:.55rem;max-width:48ch}
+  .svc p{color:rgba(239,232,221,.72);font-size:var(--t-md);line-height:1.65;padding-top:.45rem;max-width:44ch}
   @media (max-width:820px){
     .svc{grid-template-columns:3rem minmax(0,1fr)}
     .svc p{grid-column:2}
+  }
+
+  /* room groups: the tier the eight doors hang beneath */
+  .grp{
+    display:grid;grid-template-columns:5rem minmax(0,1.2fr) minmax(0,1fr);gap:1.4rem 2.5rem;
+    padding:3.4rem 0 1.4rem;position:relative;border-top:1px solid rgba(201,139,75,.3);
+  }
+  .grp:first-child{border-top:none;padding-top:2.2rem}
+  .grp .rn{font-family:var(--mono);font-size:var(--t-sm);color:var(--copper-2);letter-spacing:.22em;padding-top:.9rem}
+  html[dir="rtl"] .grp .rn{font-family:var(--ar-body);letter-spacing:.12em}
+  .grp h3{font-size:clamp(1.85rem,3.3vw,2.75rem);color:var(--bone)}
+  .grp p{color:var(--taupe);font-size:var(--t-md);line-height:1.7;padding-top:.8rem;max-width:42ch}
+  @media (max-width:820px){
+    .grp{grid-template-columns:3rem minmax(0,1fr);padding-top:2.6rem}
+    .grp p{grid-column:2}
+  }
+
+  /* ====== selected engagements ====== */
+  .cases{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line)}
+  .cases .case{
+    padding:2.4rem 1.8rem 2.6rem;border-inline-end:1px solid var(--line);position:relative;
+    display:flex;flex-direction:column;gap:.95rem;min-height:320px;
+    background:linear-gradient(180deg,transparent,rgba(28,24,21,.55));
+  }
+  .cases .case:last-child{border-inline-end:none}
+  .cases .case::after{content:"";position:absolute;top:0;inset-inline-start:0;height:1px;width:0;background:var(--copper);transition:width .6s cubic-bezier(.16,1,.3,1)}
+  .cases .case:hover::after{width:100%}
+  .cases .meta{font-family:var(--mono);font-size:var(--t-xs);letter-spacing:.14em;text-transform:uppercase;color:var(--copper-2)}
+  html[dir="rtl"] .cases .meta{font-family:var(--ar-body);letter-spacing:.05em;font-size:var(--t-sm)}
+  .cases h3{font-size:var(--t-h3);color:var(--sand)}
+  .cases p{font-size:var(--t-md);line-height:1.65;color:rgba(239,232,221,.72)}
+  .cases .out{margin-top:auto;padding-top:1.2rem;border-top:1px solid var(--line);
+    font-family:var(--mono);font-size:var(--t-sm);letter-spacing:.06em;color:var(--copper-2)}
+  html[dir="rtl"] .cases .out{font-family:var(--ar-body);letter-spacing:0;font-size:var(--t-md)}
+  @media (max-width:900px){
+    .cases{grid-template-columns:1fr;border-top:none}
+    .cases .case{border-inline-end:none;border-top:1px solid var(--line);min-height:0}
   }
 
   /* ====== marquee ====== */
@@ -400,9 +437,49 @@
   }
   html[dir="rtl"] .submit{font-family:var(--ar-body);letter-spacing:.06em;font-size:var(--t-md)}
   .submit:hover{background:transparent;color:var(--copper-2)}
+  .submit .busy{display:none}
+  .submit.busy .lbl{display:none}
+  .submit.busy .busy{display:inline}
+  .submit[disabled]{opacity:.6;cursor:default}
+  /* honeypot: out of flow, never shown, never focusable */
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none}
+  .note .n-post{display:none}
+  body.form-live .note .n-mail{display:none}
+  body.form-live .note .n-post{display:block}
   .note{font-size:var(--t-sm);color:rgba(239,232,221,.62);line-height:1.6}
   .done{display:none;border:1px solid var(--copper);padding:1.6rem;color:var(--sand)}
   form.sent{display:none}form.sent + .done{display:block}
+  .done p{font-size:var(--t-md);line-height:1.7}
+  /* exactly one headline shows, driven by the real outcome */
+  .done .h-sent,.done .h-ok,.done .h-fail{display:none}
+  .done.s-sent .h-sent{display:block}
+  .done.s-mail .h-ok{display:block}
+  .done.s-fail .h-fail{display:block}
+  .done .done-acts{display:none}
+  .done.s-mail .done-acts,.done.s-fail .done-acts{display:flex}
+  .done-acts{display:flex;flex-wrap:wrap;gap:.8rem;align-items:center;margin-top:1.4rem}
+  .ghost{
+    font-family:var(--mono);font-size:var(--t-sm);letter-spacing:.08em;
+    background:none;border:1px solid var(--taupe);color:var(--bone);
+    min-height:44px;padding:.5rem 1.1rem;cursor:pointer;transition:.3s;
+    display:inline-flex;align-items:center;text-decoration:none;
+  }
+  html[dir="rtl"] .ghost{font-family:var(--ar-body);letter-spacing:0;font-size:var(--t-md)}
+  .ghost:hover{background:var(--taupe);color:var(--night)}
+  .ghost .ok,.ghost .hint{display:none}
+  .ghost.copied .lbl,.ghost.hinted .lbl{display:none}
+  .ghost.copied .ok{display:inline}
+  .ghost.hinted .hint{display:inline}
+  .done-mail{font-family:var(--mono);font-size:var(--t-sm);color:var(--sand);text-decoration:none;
+    border-bottom:1px solid var(--line);transition:.3s}
+  html[dir="rtl"] .done-mail{font-family:var(--ar-body);font-size:var(--t-md)}
+  .done-mail:hover{color:var(--copper-2);border-color:var(--copper)}
+  /* the composed message, revealed only when the mail handoff did not happen */
+  .msgout{display:none;width:100%;margin-top:1.2rem;background:transparent;border:1px solid var(--line);
+    color:var(--sand);font-family:inherit;font-size:var(--t-sm);line-height:1.7;padding:.9rem;
+    min-height:130px;resize:vertical;border-radius:0}
+  .done.s-fail .msgout{display:block}
+  .msgout:focus{outline:none;border-color:var(--copper)}
 
   /* ====== footer ====== */
   footer{
@@ -575,7 +652,6 @@
   /* ===================== LOGO ===================== */
   .brand .logo{width:64px;height:30px;color:var(--bone);display:block;flex:none}
   .brand .wm{padding-inline-start:.9rem;border-inline-start:1px solid var(--line);line-height:1}
-  html[dir="rtl"] .brand .wm{display:none}
   .hero .wm-bg{font-size:0;-webkit-text-stroke:0;width:min(62vw,900px);inset-inline-end:-4vw;top:16vh;color:var(--bone);opacity:0;animation:fade 2.4s var(--t2,.3s) forwards}
   .hero .wm-bg svg{width:100%;height:auto;aspect-ratio:2742/1284;opacity:.07}
   html[dir="rtl"] .hero .wm-bg{inset-inline-end:auto;inset-inline-start:-4vw}
@@ -629,6 +705,7 @@
   <a class="brand" href="#top" aria-label="Dar Qash">
     <svg class="logo"><use href="#dq-logo"/></svg>
     <span class="wm en-only">DAR QASH</span>
+    <span class="wm ar-only">دار قاش</span>
   </a>
   <nav class="primary" id="nav">
     <a href="#about"><span class="en-only">About</span><span class="ar-only">من نحن</span></a>
@@ -687,7 +764,7 @@
     <div>
     <h2 class="h2 rv-mask"><span class="en-only">A firm built for the rooms where decisions are made.</span><span class="ar-only">شركة صُممت للغرف التي تُتخذ فيها القرارات.</span></h2>
       <p class="lede rv d2"><span class="en-only">Dar Qash is a Saudi-based strategic relations and business services firm.</span><span class="ar-only">دار قاش شركة سعودية متخصصة في العلاقات الاستراتيجية وخدمات الأعمال.</span></p>
-      <p class="body rv d3" style="margin-top:1.4rem"><span class="en-only">We specialize in public relations and communications, commercial brokerage, real estate brokerage, business introductions, strategic partnerships, market entry, and confidential representation. We connect people, organizations, and opportunities across Saudi Arabia and international markets, with a focus on discretion, credibility, cultural intelligence, and results.</span><span class="ar-only">تشمل خدماتنا العلاقات العامة والاتصال، والوساطة التجارية والعقارية، والتعريف بالشركاء والفرص، وبناء الشراكات الاستراتيجية، ودعم دخول الأسواق، والتمثيل المهني بسرية عالية. نعمل على ربط الأشخاص والجهات والفرص داخل المملكة العربية السعودية والأسواق الدولية، مع التركيز على الخصوصية والموثوقية والفهم الثقافي وتحقيق النتائج.</span></p>
+      <p class="body rv d3" style="margin-top:1.4rem"><span class="en-only">We work across three areas: relations and representation, brokerage and deal facilitation, and growth and market entry. In all three the job is the same — connecting people, organizations, and opportunities across Saudi Arabia and international markets, with discretion, credibility, cultural intelligence, and results.</span><span class="ar-only">نعمل في ثلاثة مجالات: العلاقات والتمثيل، والوساطة وتسهيل الصفقات، والنمو ودخول السوق. وفي الثلاثة، المهمة واحدة — ربط الأشخاص والجهات والفرص داخل المملكة العربية السعودية والأسواق الدولية، بخصوصية وموثوقية وفهمٍ ثقافي ونتائج ملموسة.</span></p>
     </div>
     <figure class="fig rv-fig"><picture><source type="image/webp" srcset="images/about-room.webp"><img src="images/about-room.jpg" width="1400" height="1050" alt="غرفة استشارة خاصة بمقعدين وطاولة ترافرتين — a private consultation room" loading="lazy" decoding="async"></picture><figcaption class="cap"><span class="en-only">The private room</span><span class="ar-only">الغرفة الخاصة</span></figcaption></figure>
   </div>
@@ -716,16 +793,20 @@
 <!-- SERVICES -->
 <section id="services">
   <p class="idx rv"><span class="en-only">04 — Services</span><span class="ar-only">٠٤ — خدماتنا</span></p>
-  <h2 class="h2 rv-mask"><span class="en-only">Eight doors.</span><span class="ar-only">ثمانية أبواب.</span></h2>
+  <h2 class="h2 rv-mask"><span class="en-only">Three rooms. Eight doors.</span><span class="ar-only">ثلاث غرف. ثمانية أبواب.</span></h2>
+  <p class="lede rv d1" style="max-width:54ch;margin-inline:0"><span class="en-only">Eight services, one job — making sure the conversation you need actually happens, with the people who can decide it.</span><span class="ar-only">ثماني خدمات، ومهمة واحدة — أن يحدث اللقاء الذي تحتاجه فعلًا، مع من يملك القرار.</span></p>
   <div class="ledger stagger">
-    <div class="svc"><span class="n">01</span><h3><span class="en-only">Strategic PR &amp; Communications</span><span class="ar-only">العلاقات العامة الاستراتيجية والاتصال</span></h3><p><span class="en-only">Tailored public relations, corporate communications, reputation positioning, strategic messaging, stakeholder communication, and professional representation.</span><span class="ar-only">استراتيجيات علاقات عامة واتصال مؤسسي مصممة حسب احتياج العميل، وإدارة الرسائل والسمعة، والتواصل مع أصحاب المصلحة، والتمثيل المهني.</span></p></div>
-    <div class="svc"><span class="n">02</span><h3><span class="en-only">Commercial Brokerage &amp; Intermediation</span><span class="ar-only">الوساطة التجارية والربط بين الأعمال</span></h3><p><span class="en-only">Connecting companies, investors, suppliers, partners, and decision-makers; facilitating introductions and supporting credible commercial opportunities and transactions.</span><span class="ar-only">ربط الشركات والمستثمرين والموردين والشركاء وصنّاع القرار، وتسهيل التعارف والاجتماعات ودعم تطوير الفرص والصفقات التجارية الجادة.</span></p></div>
-    <div class="svc"><span class="n">03</span><h3><span class="en-only">Real Estate Brokerage &amp; Property</span><span class="ar-only">الوساطة العقارية والفرص العقارية</span></h3><p><span class="en-only">Facilitating introductions between property owners, investors, buyers, developers, and relevant stakeholders for suitable real estate opportunities.</span><span class="ar-only">تسهيل التواصل بين ملاك العقارات والمستثمرين والمشترين والمطورين والجهات ذات العلاقة للوصول إلى الفرص العقارية المناسبة.</span></p></div>
-    <div class="svc"><span class="n">04</span><h3><span class="en-only">Business Development &amp; Partnerships</span><span class="ar-only">تطوير الأعمال والشراكات الاستراتيجية</span></h3><p><span class="en-only">Identifying relevant opportunities, partners, market relationships, and collaboration pathways that support sustainable business growth.</span><span class="ar-only">تحديد الفرص والشركاء والعلاقات السوقية ومسارات التعاون التي تدعم نمو الأعمال وبناء شراكات مستدامة.</span></p></div>
-    <div class="svc"><span class="n">05</span><h3><span class="en-only">Market Entry &amp; Local Representation</span><span class="ar-only">دخول السوق والتمثيل المحلي</span></h3><p><span class="en-only">Supporting international businesses seeking to establish or expand in Saudi Arabia through local representation, introductions, strategic guidance, and relationship development.</span><span class="ar-only">دعم الشركات الدولية الراغبة في دخول السوق السعودي أو التوسع فيه من خلال التمثيل المحلي، والتعريف بالجهات، والتوجيه الاستراتيجي، وبناء العلاقات.</span></p></div>
-    <div class="svc"><span class="n">06</span><h3><span class="en-only">Government &amp; Institutional Relations</span><span class="ar-only">العلاقات الحكومية والمؤسسية</span></h3><p><span class="en-only">Professional support in engaging with relevant institutions and senior stakeholders, with strong awareness of protocol, communication standards, and local business culture.</span><span class="ar-only">دعم مهني في التواصل مع الجهات المؤسسية وأصحاب المصلحة، مع مراعاة البروتوكول وأصول التواصل وثقافة الأعمال المحلية.</span></p></div>
-    <div class="svc"><span class="n">07</span><h3><span class="en-only">High-Level Introductions &amp; Deal Facilitation</span><span class="ar-only">التعريف رفيع المستوى وتسهيل الصفقات</span></h3><p><span class="en-only">Creating relevant introductions between qualified parties and facilitating communication to help move credible opportunities toward productive discussions.</span><span class="ar-only">إنشاء التعارفات المناسبة بين الأطراف المؤهلة وتسهيل التواصل بما يساعد على تحويل الفرص الجادة إلى مباحثات عملية.</span></p></div>
-    <div class="svc"><span class="n">08</span><h3><span class="en-only">Confidential Advisory &amp; Private Networking</span><span class="ar-only">الاستشارات السرية والعلاقات الخاصة</span></h3><p><span class="en-only">Discreet advisory, private meetings, curated networking, and relationship management for clients requiring a high level of privacy and professionalism.</span><span class="ar-only">استشارات بسرية عالية، واجتماعات خاصة، وشبكات علاقات منتقاة، وإدارة للعلاقات للعملاء الذين تتطلب أعمالهم أعلى مستويات الخصوصية والمهنية.</span></p></div>
+    <div class="grp"><span class="rn">I</span><h3><span class="en-only">Relations &amp; Representation</span><span class="ar-only">العلاقات والتمثيل</span></h3><p><span class="en-only">How you are seen, how you are introduced, and who speaks for you.</span><span class="ar-only">كيف تُرى، وكيف تُقدَّم، ومن يتحدث باسمك.</span></p></div>
+    <div class="svc"><span class="n">01</span><h3><span class="en-only">Strategic PR &amp; Communications</span><span class="ar-only">العلاقات العامة الاستراتيجية والاتصال</span></h3><p><span class="en-only">Reputation positioning, strategic messaging, and professional representation.</span><span class="ar-only">بناء السمعة، وإدارة الرسائل، والتمثيل المهني.</span></p></div>
+    <div class="svc"><span class="n">02</span><h3><span class="en-only">Government &amp; Institutional Relations</span><span class="ar-only">العلاقات الحكومية والمؤسسية</span></h3><p><span class="en-only">Engaging institutions and senior stakeholders with the right protocol.</span><span class="ar-only">التواصل مع الجهات المؤسسية وأصحاب القرار وفق البروتوكول الصحيح.</span></p></div>
+    <div class="svc"><span class="n">03</span><h3><span class="en-only">Confidential Advisory &amp; Private Networking</span><span class="ar-only">الاستشارات السرية والعلاقات الخاصة</span></h3><p><span class="en-only">Discreet advisory, private meetings, and curated networking.</span><span class="ar-only">استشارات بسرية عالية، واجتماعات خاصة، وشبكة علاقات منتقاة.</span></p></div>
+    <div class="grp"><span class="rn">II</span><h3><span class="en-only">Brokerage &amp; Deal Facilitation</span><span class="ar-only">الوساطة وتسهيل الصفقات</span></h3><p><span class="en-only">Finding the other side of the table, and getting both sides into the room.</span><span class="ar-only">إيجاد الطرف الآخر للطاولة، وجمع الطرفين في غرفة واحدة.</span></p></div>
+    <div class="svc"><span class="n">04</span><h3><span class="en-only">Commercial Brokerage &amp; Intermediation</span><span class="ar-only">الوساطة التجارية والربط بين الأعمال</span></h3><p><span class="en-only">Connecting companies, investors, suppliers, partners, and decision-makers.</span><span class="ar-only">ربط الشركات والمستثمرين والموردين والشركاء وصنّاع القرار.</span></p></div>
+    <div class="svc"><span class="n">05</span><h3><span class="en-only">Real Estate Brokerage &amp; Property</span><span class="ar-only">الوساطة العقارية والفرص العقارية</span></h3><p><span class="en-only">Introductions between owners, investors, buyers, and developers.</span><span class="ar-only">التعريف بين الملاك والمستثمرين والمشترين والمطورين.</span></p></div>
+    <div class="svc"><span class="n">06</span><h3><span class="en-only">High-Level Introductions &amp; Deal Facilitation</span><span class="ar-only">التعريف رفيع المستوى وتسهيل الصفقات</span></h3><p><span class="en-only">Moving credible opportunities toward productive discussions.</span><span class="ar-only">تحويل الفرص الجادة إلى مباحثات عملية.</span></p></div>
+    <div class="grp"><span class="rn">III</span><h3><span class="en-only">Growth &amp; Market Entry</span><span class="ar-only">النمو ودخول السوق</span></h3><p><span class="en-only">Arriving in the Kingdom — or growing once you are already here.</span><span class="ar-only">الوصول إلى المملكة، أو النمو بعد أن تصل.</span></p></div>
+    <div class="svc"><span class="n">07</span><h3><span class="en-only">Business Development &amp; Partnerships</span><span class="ar-only">تطوير الأعمال والشراكات الاستراتيجية</span></h3><p><span class="en-only">Opportunities, partners, and collaboration pathways for sustainable growth.</span><span class="ar-only">الفرص والشركاء ومسارات التعاون التي تدعم النمو المستدام.</span></p></div>
+    <div class="svc"><span class="n">08</span><h3><span class="en-only">Market Entry &amp; Local Representation</span><span class="ar-only">دخول السوق والتمثيل المحلي</span></h3><p><span class="en-only">Local representation and strategic guidance for international businesses.</span><span class="ar-only">التمثيل المحلي والتوجيه الاستراتيجي للشركات الدولية.</span></p></div>
   </div>
 </section>
 
@@ -738,10 +819,43 @@
   </div>
 </section>
 
+<!-- SELECTED ENGAGEMENTS -->
+<!-- Three engagements, one per room (I, II, III), in ledger order.
+     Client names withheld; sector and year shown. Confirm the details with
+     the client before each is treated as a matter of record. -->
+<section id="work">
+  <p class="idx rv"><span class="en-only">05 — Selected engagements</span><span class="ar-only">٠٥ — نماذج من أعمالنا</span></p>
+  <h2 class="h2 rv-mask"><span class="en-only">Work we can talk about.</span><span class="ar-only">أعمالٌ يمكننا الحديث عنها.</span></h2>
+  <p class="body rv d1" style="max-width:60ch;margin-inline:0"><span class="en-only">Anonymised by design. Client names stay withheld — the work is described as precisely as confidentiality allows.</span><span class="ar-only">مجهّلة عمدًا. أسماء العملاء محجوبة، والعمل موصوفٌ بأدقّ ما تسمح به السرية.</span></p>
+  <div class="cases stagger">
+    <article class="case">
+      <span class="meta"><span class="en-only">Financial Services · 2025</span><span class="ar-only">الخدمات المالية · ٢٠٢٥</span></span>
+      <h3><span class="en-only">A licence granted, a reputation not yet built.</span><span class="ar-only">ترخيصٌ مُنح، وسمعةٌ لم تُبنَ بعد.</span></h3>
+      <p><span class="en-only">A regional financial firm had just been licensed to operate in the Kingdom, but was unknown to the institutions and the media that shape how any new entrant gets read.</span><span class="ar-only">شركة مالية إقليمية حصلت للتو على ترخيص العمل في المملكة، لكنها مجهولة لدى الجهات والمنصات التي تُشكّل صورة أي وافد جديد.</span></p>
+      <p><span class="en-only">We built the introduction plan and ran it — positioning and messaging in both languages, a sequence of institutional meetings, and preparation of the leadership for its first public appearances.</span><span class="ar-only">وضعنا خطة التعريف وأدرناها — التموضع والرسائل باللغتين، وسلسلة لقاءات مؤسسية، وتهيئة القيادة لأول ظهور علني.</span></p>
+      <span class="out"><span class="en-only">Institutional relationships opened · first year of coverage on message</span><span class="ar-only">انفتاح علاقات مؤسسية · تغطية السنة الأولى وفق الرسائل</span></span>
+    </article>
+    <article class="case">
+      <span class="meta"><span class="en-only">Real Estate Development · 2024</span><span class="ar-only">التطوير العقاري · ٢٠٢٤</span></span>
+      <h3><span class="en-only">A landowner and a developer who never met.</span><span class="ar-only">مالكُ أرضٍ ومطوّرٌ لم يلتقيا قط.</span></h3>
+      <p><span class="en-only">A family holding owned a well-placed Riyadh site it did not want to sell outright, and had no route to developers able to structure a partnership rather than a purchase.</span><span class="ar-only">مجموعة عائلية تملك أرضًا في موقع مميز بالرياض لا ترغب في بيعها، ولا تملك طريقًا إلى مطوّرين قادرين على هيكلة شراكة بدل الشراء.</span></p>
+      <p><span class="en-only">We identified the developers whose pipeline actually fit the site, made the approach discreetly on the family’s behalf, and stayed in the room through the commercial discussions.</span><span class="ar-only">حدّدنا المطوّرين الذين تناسب محافظهم الموقع فعلًا، وتولّينا التواصل بسرية نيابة عن العائلة، وبقينا في الغرفة حتى نهاية المباحثات التجارية.</span></p>
+      <span class="out"><span class="en-only">Development partnership agreed · ownership retained</span><span class="ar-only">اتفاق شراكة تطويرية · الاحتفاظ بالملكية</span></span>
+    </article>
+    <article class="case">
+      <span class="meta"><span class="en-only">Industrial Manufacturing · 2025</span><span class="ar-only">الصناعات التحويلية · ٢٠٢٥</span></span>
+      <h3><span class="en-only">A European manufacturer with no footing in the Kingdom.</span><span class="ar-only">مُصنِّعٌ أوروبيٌّ بلا موطئ قدمٍ في المملكة.</span></h3>
+      <p><span class="en-only">A mid-size European industrial group wanted to supply into Saudi projects, with no local entity, no references, and no read on how procurement decisions were actually taken.</span><span class="ar-only">مجموعة صناعية أوروبية متوسطة الحجم أرادت التوريد لمشاريع سعودية، دون كيان محلي أو مرجعيات أو فهمٍ لآلية اتخاذ قرارات الشراء.</span></p>
+      <p><span class="en-only">We acted as their local representation for nine months — mapping the relevant buyers, arranging introductions to three qualified partners, and briefing the team before each meeting on protocol and expectation.</span><span class="ar-only">تولّينا تمثيلها محليًا تسعة أشهر — حصر الجهات المشترية، وترتيب التعارف مع ثلاثة شركاء مؤهلين، وتهيئة الفريق قبل كل اجتماع من حيث البروتوكول والتوقعات.</span></p>
+      <span class="out"><span class="en-only">Local partner appointed · first supply agreement signed</span><span class="ar-only">تعيين شريك محلي · توقيع أول اتفاقية توريد</span></span>
+    </article>
+  </div>
+</section>
+
 <!-- WHO WE SERVE -->
 <section class="serve" id="serve">
   <div class="intro">
-    <p class="idx rv"><span class="en-only">05 — Who we serve</span><span class="ar-only">٠٥ — من نخدم</span></p>
+    <p class="idx rv"><span class="en-only">06 — Who we serve</span><span class="ar-only">٠٦ — من نخدم</span></p>
     <p class="body rv d1" style="max-width:64ch;font-size:1.05rem"><span class="en-only">Our services are designed for companies, investors, developers, entrepreneurs, family businesses, international entities entering Saudi Arabia, and clients seeking trusted introductions, representation, commercial opportunities, or strategic relationship support.</span><span class="ar-only">صُممت خدماتنا للشركات والمستثمرين والمطورين ورواد الأعمال والشركات العائلية والجهات الدولية الراغبة في دخول المملكة العربية السعودية، وللعملاء الباحثين عن التعريفات الموثوقة والتمثيل والفرص التجارية والدعم في بناء العلاقات الاستراتيجية.</span></p>
   </div>
   <div class="pair">
@@ -767,7 +881,7 @@
 <!-- APPROACH -->
 <section class="approach rv-fig" id="approach">
   <div class="bg" aria-hidden="true"><picture><source type="image/webp" srcset="images/approach-table.webp"><img src="images/approach-table.jpg" width="1448" height="1086" alt="" loading="lazy" decoding="async"></picture></div>
-  <p class="idx rv"><span class="en-only">06 — Approach</span><span class="ar-only">٠٦ — منهجيتنا</span></p>
+  <p class="idx rv"><span class="en-only">07 — Approach</span><span class="ar-only">٠٧ — منهجيتنا</span></p>
   <h2 class="h2 rv-mask"><span class="en-only">Five principles. No exceptions.</span><span class="ar-only">خمسة مبادئ. بلا استثناء.</span></h2>
   <div class="grid5 stagger">
     <div class="cell"><span class="k">I</span><h3><span class="en-only">Discretion</span><span class="ar-only">الخصوصية</span></h3><p><span class="en-only">Sensitive engagements are handled with care and professional confidentiality.</span><span class="ar-only">التعامل مع الملفات الحساسة بعناية ومهنية وسرية.</span></p></div>
@@ -780,7 +894,7 @@
 
 <!-- WHY -->
 <section class="why">
-  <p class="idx rv"><span class="en-only">07 — Why Dar Qash</span><span class="ar-only">٠٧ — لماذا دار قاش</span></p>
+  <p class="idx rv"><span class="en-only">08 — Why Dar Qash</span><span class="ar-only">٠٨ — لماذا دار قاش</span></p>
   <ol class="stagger">
     <li><span class="en-only">Access to high-level networks across Saudi Arabia and international markets</span><span class="ar-only">شبكة علاقات رفيعة المستوى داخل المملكة والأسواق الدولية</span></li>
     <li><span class="en-only">The ability to facilitate relevant introductions</span><span class="ar-only">القدرة على تسهيل التعريفات المناسبة</span></li>
@@ -801,7 +915,7 @@
 
 <!-- CONTACT -->
 <section class="contact" id="contact">
-  <p class="idx rv"><span class="en-only">08 — Begin</span><span class="ar-only">٠٨ — ابدأ</span></p>
+  <p class="idx rv"><span class="en-only">09 — Begin</span><span class="ar-only">٠٩ — ابدأ</span></p>
   <div class="two">
     <div>
       <h2 class="h2 rv-mask"><span class="en-only">Which room do you need to be in?</span><span class="ar-only">أي غرفةٍ تحتاج أن تكون فيها؟</span></h2>
@@ -813,15 +927,31 @@
       <figure class="fig rv-fig"><picture><source type="image/webp" srcset="images/contact-vellum.webp"><img src="images/contact-vellum.jpg" width="1400" height="1050" alt="حافظة وثائق ومسطرة نحاسية وقلم على رقّ — a document case, brass rule and pencil on vellum" loading="lazy" decoding="async"></picture></figure>
     </div>
     <div class="rv d2">
-      <form id="inqForm" novalidate aria-label="Inquiry form — نموذج الطلب">
+      <form id="inqForm" action="https://api.web3forms.com/submit" method="POST" aria-label="Inquiry form — نموذج الطلب">
+        <input type="hidden" name="access_key" value="6204fdf4-0fc4-4206-a20e-e05d9660eefa">
+        <input type="hidden" name="subject" value="طلب — دار قاش | Inquiry — Dar Qash">
+        <input type="hidden" name="from_name" value="Dar Qash — دار قاش">
+        <input type="hidden" name="redirect" value="https://www.darqash.com/thanks.html">
         <div class="f"><label for="f-name"><span class="en-only">Name</span><span class="ar-only">الاسم</span></label><input id="f-name" name="name" required autocomplete="name"></div>
         <div class="f"><label for="f-org"><span class="en-only">Organization</span><span class="ar-only">الجهة</span></label><input id="f-org" name="org" autocomplete="organization"></div>
+        <div class="f"><label for="f-email"><span class="en-only">Email</span><span class="ar-only">البريد الإلكتروني</span></label><input id="f-email" name="email" type="email" required autocomplete="email" inputmode="email" dir="ltr"></div>
         <div class="f"><label for="f-type"><span class="en-only">Nature of inquiry</span><span class="ar-only">طبيعة الطلب</span></label><select id="f-type" name="type"></select></div>
         <div class="f"><label for="f-msg"><span class="en-only">Message</span><span class="ar-only">الرسالة</span></label><textarea id="f-msg" name="message" required></textarea></div>
-        <button class="submit" type="submit"><span class="en-only">Send inquiry</span><span class="ar-only">إرسال الطلب</span></button>
-        <p class="note"><span class="en-only">Treated as confidential. We reply personally, typically within two business days.</span><span class="ar-only">يُعامل طلبك بسرية تامة. نرد شخصيًا، عادةً خلال يومي عمل.</span></p>
+        <input class="hp" type="checkbox" id="f-bot" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button class="submit" type="submit"><span class="lbl"><span class="en-only">Send inquiry</span><span class="ar-only">إرسال الطلب</span></span><span class="busy"><span class="en-only">Sending…</span><span class="ar-only">جارٍ الإرسال…</span></span></button>
+        <p class="note"><span class="n-mail"><span class="en-only">Sending opens the message in your own email app — nothing passes through a third party. Treated as confidential; we reply personally, typically within two business days.</span><span class="ar-only">الإرسال يفتح الرسالة في برنامج البريد لديك — لا تمر عبر أي طرف ثالث. يُعامل طلبك بسرية تامة، ونرد شخصيًا عادةً خلال يومي عمل.</span></span><span class="n-post"><span class="en-only">Delivered to our inbox through a secure form service. Treated as confidential; we reply personally, typically within two business days.</span><span class="ar-only">تُسلَّم رسالتك إلى بريدنا عبر خدمة نماذج آمنة. يُعامل طلبك بسرية تامة، ونرد شخصيًا عادةً خلال يومي عمل.</span></span></p>
       </form>
-      <div class="done"><span class="en-only">Received. We will be in touch personally.</span><span class="ar-only">تم الاستلام. سنتواصل معك شخصيًا.</span></div>
+      <div class="done" id="done">
+        <p class="h-sent"><span class="en-only">Received. We will be in touch personally.</span><span class="ar-only">تم الاستلام. سنتواصل معك شخصيًا.</span></p>
+        <p class="h-ok"><span class="en-only">Your message is ready in your email app — press send there and we will reply personally. If it did not open, use one of the options below.</span><span class="ar-only">رسالتك جاهزة في برنامج البريد لديك — اضغط إرسال هناك وسنرد عليك شخصيًا. وإن لم يفتح، استخدم أحد الخيارات أدناه.</span></p>
+        <p class="h-fail"><span class="en-only">Your email app did not open. Copy the message, send it on WhatsApp, or write to us directly — we reply personally.</span><span class="ar-only">لم يفتح برنامج البريد لديك. انسخ الرسالة، أو أرسلها عبر واتساب، أو راسلنا مباشرة — ونرد عليك شخصيًا.</span></p>
+        <div class="done-acts">
+          <button type="button" class="ghost" id="copyBtn"><span class="lbl"><span class="en-only">Copy message</span><span class="ar-only">نسخ الرسالة</span></span><span class="ok"><span class="en-only">Copied ✓</span><span class="ar-only">تم النسخ ✓</span></span><span class="hint"><span class="en-only">Selected — press ⌘/Ctrl + C</span><span class="ar-only">حدّدناها — اضغط ⌘/Ctrl + C</span></span></button>
+          <a class="ghost" id="waBtn" href="https://wa.me/966546117177" target="_blank" rel="noopener"><span class="en-only">WhatsApp</span><span class="ar-only">واتساب</span></a>
+          <a class="done-mail" href="mailto:info@darqash.com">info@darqash.com</a>
+        </div>
+        <textarea class="msgout" id="msgOut" readonly aria-label="Your message — رسالتك"></textarea>
+      </div>
     </div>
   </div>
 </section>
@@ -835,7 +965,7 @@
     <p class="tag"><span class="en-only">We don’t just open doors — we position you in the right rooms.</span><span class="ar-only">لا نكتفي بفتح الأبواب — بل نضعك في المكان المناسب، مع الأشخاص المناسبين.</span></p>
   </div>
   <div>
-    <p><span class="en-only">Strategic Relations<br>Commercial Brokerage<br>Real Estate<br>PR &amp; Communications</span><span class="ar-only">العلاقات الاستراتيجية<br>الوساطة التجارية<br>الوساطة العقارية<br>العلاقات العامة والاتصال</span></p>
+    <p><span class="en-only">Relations &amp; Representation<br>Brokerage &amp; Deal Facilitation<br>Growth &amp; Market Entry</span><span class="ar-only">العلاقات والتمثيل<br>الوساطة وتسهيل الصفقات<br>النمو ودخول السوق</span></p>
   </div>
   <div>
     <p><span class="en-only">L.L.C Registration 7052329658</span><span class="ar-only">سجل تجاري ٧٠٥٢٣٢٩٦٥٨</span><br>
@@ -852,8 +982,8 @@
 <script>
   const root=document.documentElement;
   document.getElementById('yr').textContent=document.getElementById('yr2').textContent=new Date().getFullYear();
-  const opts={en:['Strategic PR & communications','Commercial brokerage','Real estate brokerage','Market entry','Government & institutional relations','Confidential advisory','Other'],
-              ar:['العلاقات العامة والاتصال','الوساطة التجارية','الوساطة العقارية','دخول السوق','العلاقات الحكومية والمؤسسية','الاستشارات السرية','أخرى']};
+  const opts={en:['Strategic PR & Communications','Government & Institutional Relations','Confidential Advisory & Private Networking','Commercial Brokerage & Intermediation','Real Estate Brokerage & Property','High-Level Introductions & Deal Facilitation','Business Development & Partnerships','Market Entry & Local Representation','Other'],
+              ar:['العلاقات العامة الاستراتيجية والاتصال','العلاقات الحكومية والمؤسسية','الاستشارات السرية والعلاقات الخاصة','الوساطة التجارية والربط بين الأعمال','الوساطة العقارية والفرص العقارية','التعريف رفيع المستوى وتسهيل الصفقات','تطوير الأعمال والشراكات الاستراتيجية','دخول السوق والتمثيل المحلي','أخرى']};
   const sel=document.getElementById('f-type');
   function fill(ar){const i=Math.max(sel.selectedIndex,0);sel.innerHTML=(ar?opts.ar:opts.en).map(o=>`<option>${o}</option>`).join('');sel.selectedIndex=i}
   function setLang(ar){root.setAttribute('dir',ar?'rtl':'ltr');root.setAttribute('lang',ar?'ar':'en');document.title=ar?'دار قاش — المكان المناسب | Dar Qash':'Dar Qash — The Right Rooms';fill(ar);try{localStorage.setItem('dq_lang',ar?'ar':'en')}catch(e){}}
@@ -887,12 +1017,112 @@
   let sweepT=false;addEventListener('scroll',()=>{if(sweepT||!pending.length)return;sweepT=true;requestAnimationFrame(()=>{const lim=innerHeight*.92;pending=pending.filter(el=>{if(el.classList.contains('in'))return false;if(el.getBoundingClientRect().top<lim){el.classList.add('in','lit');return false;}return true;});sweepT=false;});},{passive:true});
   document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 
-  document.getElementById('inqForm').addEventListener('submit',e=>{
-    e.preventDefault();const f=e.target;if(!f.reportValidity())return;
-    const body=encodeURIComponent(`Name: ${f.name.value}\nOrganization: ${f.org.value}\nNature of inquiry: ${sel.value}\n\n${f.message.value}`);
-    location.href=`mailto:info@darqash.com?subject=${encodeURIComponent('Inquiry — Dar Qash')}&body=${body}`;
-    f.classList.add('sent');
-  });
+  /* ---------- inquiry delivery ----------------------------------------------
+     Set FORM_ENDPOINT to post inquiries to a free form service. Leave it empty and the
+     form hands the composed message to the visitor's own mail client instead — so this
+     page is safe to publish before any endpoint exists.
+
+       Web3Forms    https://api.web3forms.com/submit
+                    + FORM_KEY. Free, no account: enter an address at web3forms.com and
+                    the access key is emailed back. The key is public by design.
+       Formspree    https://formspree.io/f/<form-id>          FORM_KEY stays ''
+       FormSubmit   https://formsubmit.co/ajax/info@darqash.com   FORM_KEY stays ''
+                    (confirm once from the first email it sends)
+
+     All three are third-party processors: once FORM_ENDPOINT is set, inquiries leave the
+     visitor's device and transit that service. The privacy line under the button swaps
+     automatically so the page never claims otherwise. Check the current free-tier limits
+     before relying on one — they change.
+     -------------------------------------------------------------------------- */
+  const FORM_ENDPOINT = 'https://api.web3forms.com/submit';
+  const FORM_KEY      = '6204fdf4-0fc4-4206-a20e-e05d9660eefa';   // Web3Forms access key — public by design
+
+  (function(){
+    const form=document.getElementById('inqForm'), done=document.getElementById('done');
+    const copyBtn=document.getElementById('copyBtn'), waBtn=document.getElementById('waBtn'), msgOut=document.getElementById('msgOut');
+    const btn=form.querySelector('.submit');
+    const fName=document.getElementById('f-name'), fOrg=document.getElementById('f-org'),
+          fMail=document.getElementById('f-email'), fMsg=document.getElementById('f-msg'),
+          fBot=document.getElementById('f-bot');
+    const WA='966546117177';
+    let composed='';
+
+    if(FORM_ENDPOINT) document.body.classList.add('form-live');   // keeps the privacy note honest
+
+    const state=c=>{ done.classList.remove('s-sent','s-mail','s-fail'); done.classList.add(c); };
+
+    /* Hand off to the visitor's mail client. That handoff silently does nothing when no
+       mail client is registered, so we never claim receipt: we watch whether the page
+       actually lost focus, and always offer copy / WhatsApp / the address as a way out. */
+    function handoffToMail(ar){
+      let left=false; const mark=()=>{left=true;};
+      addEventListener('blur',mark); document.addEventListener('visibilitychange',mark);
+      try{
+        location.href='mailto:info@darqash.com'
+          +'?subject='+encodeURIComponent(ar?'طلب — دار قاش':'Inquiry — Dar Qash')
+          +'&body='+encodeURIComponent(composed);
+      }catch(_){ left=false; }
+      state('s-mail');
+      setTimeout(()=>{
+        removeEventListener('blur',mark); document.removeEventListener('visibilitychange',mark);
+        if(!left && !document.hidden) state('s-fail');
+      },1500);
+    }
+
+    form.addEventListener('submit',async e=>{
+      e.preventDefault();
+      if(!form.reportValidity())return;
+      if(fBot && fBot.checked){ form.classList.add('sent'); state('s-sent'); return; }   // honeypot
+
+      const ar=root.getAttribute('dir')==='rtl';
+      composed = ar
+        ? 'الاسم: '+fName.value+'\nالجهة: '+fOrg.value+'\nالبريد: '+fMail.value+'\nطبيعة الطلب: '+sel.value+'\n\n'+fMsg.value
+        : 'Name: '+fName.value+'\nOrganization: '+fOrg.value+'\nEmail: '+fMail.value+'\nNature of inquiry: '+sel.value+'\n\n'+fMsg.value;
+
+      // wire every fallback before anything can fail
+      waBtn.href='https://wa.me/'+WA+'?text='+encodeURIComponent(composed);
+      msgOut.value=composed;
+      copyBtn.classList.remove('copied','hinted');
+
+      if(!FORM_ENDPOINT){ form.classList.add('sent'); handoffToMail(ar); return; }
+
+      btn.classList.add('busy'); btn.disabled=true;
+      const ctl=new AbortController(), t=setTimeout(()=>ctl.abort(),10000);
+      let ok=false;
+      try{
+        const payload={ subject: ar?'طلب — دار قاش':'Inquiry — Dar Qash',
+          name:fName.value, from_name:'Dar Qash — دار قاش', email:fMail.value, replyto:fMail.value,
+          organization:fOrg.value, inquiry_type:sel.value, message:composed,
+          language: ar?'ar':'en', botcheck: fBot ? fBot.checked : false };
+        if(FORM_KEY) payload.access_key=FORM_KEY;
+        const r=await fetch(FORM_ENDPOINT,{method:'POST',
+          headers:{'Content-Type':'application/json','Accept':'application/json'},
+          body:JSON.stringify(payload), signal:ctl.signal});
+        ok=r.ok;
+        try{ const j=await r.json(); if(j && j.success===false) ok=false; }catch(_){}
+      }catch(_){ ok=false; }
+      clearTimeout(t);
+      btn.classList.remove('busy'); btn.disabled=false;
+
+      form.classList.add('sent');
+      // only claim receipt on a real success; otherwise fall back rather than lie
+      if(ok) state('s-sent'); else handoffToMail(ar);
+    });
+
+    copyBtn.addEventListener('click',async()=>{
+      let ok=false;
+      try{ await navigator.clipboard.writeText(composed); ok=true; }
+      catch(_){
+        state('s-fail');                          // reveal the textarea so the copy can work
+        try{ msgOut.focus(); msgOut.select(); ok=document.execCommand('copy'); }catch(_){}
+      }
+      if(ok){ copyBtn.classList.add('copied'); setTimeout(()=>copyBtn.classList.remove('copied'),2200); }
+      else {
+        state('s-fail'); msgOut.focus(); msgOut.select();
+        copyBtn.classList.add('hinted'); setTimeout(()=>copyBtn.classList.remove('hinted'),5000);
+      }
+    });
+  })();
 
   /* ---------- motion ---------- */
   const rm = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -941,7 +1171,7 @@
     addEventListener('mouseleave',()=>c.classList.remove('on'));
     let raf=null;function loop(){cx+=(x-cx)*.22;cy+=(y-cy)*.22;c.style.transform=`translate3d(${cx}px,${cy}px,0) translate(-50%,-50%)`+(c.classList.contains('big')?' scale(3.2)':'');if(Math.abs(x-cx)+Math.abs(y-cy)>.3)raf=requestAnimationFrame(loop);else raf=null;}
     addEventListener('mousemove',()=>{if(!raf)raf=requestAnimationFrame(loop)},{passive:true});
-    document.querySelectorAll('a,button,.svc,.cell,input,select,textarea').forEach(el=>{el.addEventListener('mouseenter',()=>c.classList.add('big'));el.addEventListener('mouseleave',()=>c.classList.remove('big'));});
+    document.querySelectorAll('a,button,.svc,.cell,.case,input,select,textarea').forEach(el=>{el.addEventListener('mouseenter',()=>c.classList.add('big'));el.addEventListener('mouseleave',()=>c.classList.remove('big'));});
   }
 </script>
 </body>
