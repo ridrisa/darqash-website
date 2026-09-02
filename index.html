@@ -7,7 +7,6 @@
 <meta name="description" content="دار قاش — شركة سعودية للعلاقات الاستراتيجية: الاتصال، الوساطة التجارية والعقارية، دخول السوق، والتمثيل بسرية عالية. Dar Qash — a Saudi strategic-relations firm.">
 <meta name="theme-color" content="#14110f">
 <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
-<link rel="preload" as="image" href="images/doors-limestone.jpg">
 <link rel="canonical" href="https://www.darqash.com/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Dar Qash — دار قاش">
@@ -25,7 +24,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Instrument+Sans:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@300;400&family=Reem+Kufi:wght@400;500&family=Noto+Kufi+Arabic:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Instrument+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400&family=Reem+Kufi:wght@400;500&family=Noto+Kufi+Arabic:wght@400&display=swap" rel="stylesheet">
 <style>
   :root{
     --night:#14110f;
@@ -89,8 +88,8 @@
       radial-gradient(900px 600px at -10% 110%, rgba(201,139,75,.10), transparent 60%);
   }
   body::after{
-    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.055;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.05;
+    background:url(images/grain.png) repeat;background-size:256px 256px;
   }
   main,header,footer{position:relative;z-index:1}
 
@@ -285,7 +284,7 @@
     background:var(--taupe);color:var(--night);
     padding-block:clamp(4rem,9vw,7rem);position:relative;overflow:hidden;
   }
-  .band::before{content:"";position:absolute;inset:0;background:url(images/texture-plaster.jpg) center/cover;mix-blend-mode:multiply;opacity:.55;pointer-events:none}
+  .band::before{content:"";position:absolute;inset:0;background:url(images/band-plaster.jpg) center/cover;pointer-events:none}
   .band > *{position:relative;z-index:1}
   .band .idx{color:var(--night)}
   .band .idx::after{background:var(--night)}
@@ -446,7 +445,9 @@
   .lit .w{opacity:1;transform:none}
 
   /* parallax layers */
-  .hero .wm-bg,.hero .grid{will-change:transform}
+  .hero .wm-bg,.hero .grid,.hero-img img,.divider .fig img{will-change:transform}
+  .track{will-change:transform}
+  .door{will-change:transform}
 
   /* copper sweep on the primary button */
   .submit{position:relative;overflow:hidden}
@@ -479,9 +480,9 @@
 
   /* custom cursor (pointer devices only) */
   .cur{position:fixed;top:0;left:0;width:10px;height:10px;border-radius:50%;background:var(--copper-2);pointer-events:none;z-index:200;
-    transform:translate(-50%,-50%) scale(1);transition:transform .35s cubic-bezier(.16,1,.3,1),opacity .3s;opacity:0;mix-blend-mode:difference}
+    transform:translate(-50%,-50%);transition:opacity .3s,background .3s;opacity:0;mix-blend-mode:difference;will-change:transform}
   .cur.on{opacity:1}
-  .cur.big{transform:translate(-50%,-50%) scale(3.2);background:var(--bone)}
+  .cur.big{background:var(--bone)}
   @media (hover:none),(pointer:coarse){.cur{display:none}}
   html.has-cursor a,html.has-cursor button,html.has-cursor .svc,html.has-cursor .cell{cursor:none}
 
@@ -504,7 +505,7 @@
   .fig img{display:block;width:100%;height:100%;object-fit:cover;transform:scale(1.08);transition:transform 1.8s cubic-bezier(.16,1,.3,1),opacity 1s ease;opacity:0}
   .fig.in img,.rv-fig.in .fig img{transform:none;opacity:1}
   .fig .cap{position:absolute;bottom:1rem;inset-inline-start:1rem;font-family:var(--mono);font-size:var(--t-xs);letter-spacing:.16em;text-transform:uppercase;color:var(--sand);
-    background:rgba(20,17,15,.55);padding:.35rem .7rem;backdrop-filter:blur(4px)}
+    background:rgba(20,17,15,.7);padding:.35rem .7rem}
   html[dir="rtl"] .fig .cap{font-family:var(--ar-body);letter-spacing:.04em;font-size:var(--t-sm)}
   .fig::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(179,160,143,.14);pointer-events:none}
 
@@ -561,7 +562,7 @@
   .approach.in .bg img{opacity:.55}
   .approach .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,var(--night) 0%,rgba(20,17,15,.55) 40%,rgba(20,17,15,.85) 100%)}
   .approach > *{position:relative;z-index:1}
-  .approach .cell{background:linear-gradient(180deg,rgba(20,17,15,.1),rgba(20,17,15,.75));backdrop-filter:blur(2px)}
+  .approach .cell{background:linear-gradient(180deg,rgba(20,17,15,.15),rgba(20,17,15,.8))}
 
   /* contact: still-life beside the copy */
   .contact .fig{aspect-ratio:4/3;margin-top:2.6rem;max-width:520px}
@@ -576,7 +577,7 @@
   .brand .wm{padding-inline-start:.9rem;border-inline-start:1px solid var(--line);line-height:1}
   html[dir="rtl"] .brand .wm{display:none}
   .hero .wm-bg{font-size:0;-webkit-text-stroke:0;width:min(62vw,900px);inset-inline-end:-4vw;top:16vh;color:var(--bone);opacity:0;animation:fade 2.4s var(--t2,.3s) forwards}
-  .hero .wm-bg svg{width:100%;height:auto;aspect-ratio:2742/1284;opacity:.07;filter:blur(.3px)}
+  .hero .wm-bg svg{width:100%;height:auto;aspect-ratio:2742/1284;opacity:.07}
   html[dir="rtl"] .hero .wm-bg{inset-inline-end:auto;inset-inline-start:-4vw}
   footer .logo-big{width:min(100%,420px);height:auto;aspect-ratio:2742/1284;color:var(--bone);display:block}
   @media (max-width:480px){.brand .logo{width:54px;height:26px}.hero .wm-bg{display:none}.brand .wm{font-size:.95rem}}
@@ -595,6 +596,7 @@
     try{
       if(!sessionStorage.getItem('dq_doors') && !matchMedia('(prefers-reduced-motion: reduce)').matches){
         document.documentElement.classList.add('first-visit');
+        var pl=document.createElement('link');pl.rel='preload';pl.as='image';pl.href='images/doors-limestone.jpg';document.head.appendChild(pl);
         sessionStorage.setItem('dq_doors','1');
         // align the bronze strip in the limestone photograph with the seam between the doors
         const IMG_W=1774,IMG_H=887,STRIP_L=1225,STRIP_R=1290;
@@ -645,7 +647,7 @@
 
 <!-- HERO -->
 <section class="hero" id="top">
-  <div class="hero-img" aria-hidden="true"><img src="images/hero-courtyard.jpg" width="1536" height="1024" alt="" fetchpriority="high"></div>
+  <div class="hero-img" aria-hidden="true"><picture><source type="image/webp" srcset="images/hero-courtyard.webp"><img src="images/hero-courtyard.jpg" width="1536" height="1024" alt="" fetchpriority="high"></picture></div>
   <div class="grid" aria-hidden="true"></div>
   <div class="wm-bg" aria-hidden="true"><svg><use href="#dq-logo"/></svg></div>
 
@@ -687,7 +689,7 @@
       <p class="lede rv d2"><span class="en-only">Dar Qash is a Saudi-based strategic relations and business services firm.</span><span class="ar-only">دار قاش شركة سعودية متخصصة في العلاقات الاستراتيجية وخدمات الأعمال.</span></p>
       <p class="body rv d3" style="margin-top:1.4rem"><span class="en-only">We specialize in public relations and communications, commercial brokerage, real estate brokerage, business introductions, strategic partnerships, market entry, and confidential representation. We connect people, organizations, and opportunities across Saudi Arabia and international markets, with a focus on discretion, credibility, cultural intelligence, and results.</span><span class="ar-only">تشمل خدماتنا العلاقات العامة والاتصال، والوساطة التجارية والعقارية، والتعريف بالشركاء والفرص، وبناء الشراكات الاستراتيجية، ودعم دخول الأسواق، والتمثيل المهني بسرية عالية. نعمل على ربط الأشخاص والجهات والفرص داخل المملكة العربية السعودية والأسواق الدولية، مع التركيز على الخصوصية والموثوقية والفهم الثقافي وتحقيق النتائج.</span></p>
     </div>
-    <figure class="fig rv-fig"><img src="images/about-room.jpg" width="1400" height="1050" alt="غرفة استشارة خاصة بمقعدين وطاولة ترافرتين — a private consultation room" loading="lazy" decoding="async"><figcaption class="cap"><span class="en-only">The private room</span><span class="ar-only">الغرفة الخاصة</span></figcaption></figure>
+    <figure class="fig rv-fig"><picture><source type="image/webp" srcset="images/about-room.webp"><img src="images/about-room.jpg" width="1400" height="1050" alt="غرفة استشارة خاصة بمقعدين وطاولة ترافرتين — a private consultation room" loading="lazy" decoding="async"></picture><figcaption class="cap"><span class="en-only">The private room</span><span class="ar-only">الغرفة الخاصة</span></figcaption></figure>
   </div>
 </section>
 
@@ -699,13 +701,13 @@
     <p class="lede rv d1"><span class="en-only">We operate at the intersection of influence, business, communication, and opportunity.</span><span class="ar-only">نعمل عند تقاطع النفوذ والأعمال والاتصال والفرص.</span></p>
     <p class="body rv d2"><span class="en-only">Our role is to help clients navigate complex environments, build trusted relationships, identify relevant opportunities, and engage with the right commercial and institutional stakeholders.</span><span class="ar-only">يتمثل دورنا في مساعدة عملائنا على التعامل مع البيئات المعقدة، وبناء علاقات موثوقة، وتحديد الفرص المناسبة، والتواصل مع الجهات التجارية والمؤسسية ذات الصلة.</span></p>
     </div>
-    <figure class="fig rv-fig"><img src="images/positioning-colonnade.jpg" width="1586" height="992" alt="رواق حجري بمشربية برونزية في الرياض — a Riyadh limestone colonnade with a bronze screen" loading="lazy" decoding="async"><figcaption class="cap"><span class="en-only">Riyadh</span><span class="ar-only">الرياض</span></figcaption></figure>
+    <figure class="fig rv-fig"><picture><source type="image/webp" srcset="images/positioning-colonnade.webp"><img src="images/positioning-colonnade.jpg" width="1586" height="992" alt="رواق حجري بمشربية برونزية في الرياض — a Riyadh limestone colonnade with a bronze screen" loading="lazy" decoding="async"></picture><figcaption class="cap"><span class="en-only">Riyadh</span><span class="ar-only">الرياض</span></figcaption></figure>
   </div>
 </section>
 
 <!-- VISION -->
 <section class="vision rv-fig">
-  <div class="bg" aria-hidden="true"><img src="images/vision-threshold.jpg" width="1587" height="991" alt="" loading="lazy" decoding="async"></div>
+  <div class="bg" aria-hidden="true"><picture><source type="image/webp" srcset="images/vision-threshold.webp"><img src="images/vision-threshold.jpg" width="1587" height="991" alt="" loading="lazy" decoding="async"></picture></div>
   <p class="idx rv" style="justify-content:center"><span class="en-only">03 — Vision</span><span class="ar-only">٠٣ — رؤيتنا</span></p>
   <p class="q words"><span class="en-only">To be a trusted bridge between <b>ambition</b>, <b>opportunity</b>, and regional influence — enabling our clients to operate effectively at the highest levels.</span><span class="ar-only">أن نكون الجسر الموثوق بين <b>الطموح</b> و<b>الفرص</b> والتأثير الإقليمي، بما يمكّن عملاءنا من العمل بفعالية على أعلى المستويات.</span></p>
   <div class="diamond rv d2"></div>
@@ -729,7 +731,7 @@
 
 <!-- DIVIDER -->
 <section class="divider rv-fig" aria-label="Riyadh">
-  <figure class="fig"><img src="images/divider-passage.jpg" width="1586" height="992" alt="ممر حجري ينفتح نحو فناء مضاء — a stone passage opening toward light" loading="lazy" decoding="async"></figure>
+  <figure class="fig"><picture><source type="image/webp" srcset="images/divider-passage.webp"><img src="images/divider-passage.jpg" width="1586" height="992" alt="ممر حجري ينفتح نحو فناء مضاء — a stone passage opening toward light" loading="lazy" decoding="async"></picture></figure>
   <div class="line">
     <span class="big"><span class="en-only">Riyadh</span><span class="ar-only">الرياض</span></span>
     <span class="small"><span class="en-only">Where the conversations happen</span><span class="ar-only">حيث تدور الأحاديث</span></span>
@@ -743,8 +745,8 @@
     <p class="body rv d1" style="max-width:64ch;font-size:1.05rem"><span class="en-only">Our services are designed for companies, investors, developers, entrepreneurs, family businesses, international entities entering Saudi Arabia, and clients seeking trusted introductions, representation, commercial opportunities, or strategic relationship support.</span><span class="ar-only">صُممت خدماتنا للشركات والمستثمرين والمطورين ورواد الأعمال والشركات العائلية والجهات الدولية الراغبة في دخول المملكة العربية السعودية، وللعملاء الباحثين عن التعريفات الموثوقة والتمثيل والفرص التجارية والدعم في بناء العلاقات الاستراتيجية.</span></p>
   </div>
   <div class="pair">
-    <figure class="fig rv-fig"><img src="images/clients-aerial.jpg" width="1400" height="933" alt="منظر جوي لمجمع أفنية من الحجر الجيري — aerial view of a limestone courtyard development" loading="lazy" decoding="async"><figcaption class="cap"><span class="en-only">Developers</span><span class="ar-only">المطورون</span></figcaption></figure>
-    <figure class="fig rv-fig"><img src="images/clients-courtyard.jpg" width="1400" height="933" alt="فناء متعدد الاستخدامات بحدائق — a mixed-use limestone courtyard with gardens" loading="lazy" decoding="async"><figcaption class="cap"><span class="en-only">Investors</span><span class="ar-only">المستثمرون</span></figcaption></figure>
+    <figure class="fig rv-fig"><picture><source type="image/webp" srcset="images/clients-aerial.webp"><img src="images/clients-aerial.jpg" width="1400" height="933" alt="منظر جوي لمجمع أفنية من الحجر الجيري — aerial view of a limestone courtyard development" loading="lazy" decoding="async"></picture><figcaption class="cap"><span class="en-only">Developers</span><span class="ar-only">المطورون</span></figcaption></figure>
+    <figure class="fig rv-fig"><picture><source type="image/webp" srcset="images/clients-courtyard.webp"><img src="images/clients-courtyard.jpg" width="1400" height="933" alt="فناء متعدد الاستخدامات بحدائق — a mixed-use limestone courtyard with gardens" loading="lazy" decoding="async"></picture><figcaption class="cap"><span class="en-only">Investors</span><span class="ar-only">المستثمرون</span></figcaption></figure>
   </div>
   <div class="track" aria-hidden="true">
     <span><span class="en-only">Companies</span><span class="ar-only">الشركات</span></span>
@@ -764,7 +766,7 @@
 
 <!-- APPROACH -->
 <section class="approach rv-fig" id="approach">
-  <div class="bg" aria-hidden="true"><img src="images/approach-table.jpg" width="1448" height="1086" alt="" loading="lazy" decoding="async"></div>
+  <div class="bg" aria-hidden="true"><picture><source type="image/webp" srcset="images/approach-table.webp"><img src="images/approach-table.jpg" width="1448" height="1086" alt="" loading="lazy" decoding="async"></picture></div>
   <p class="idx rv"><span class="en-only">06 — Approach</span><span class="ar-only">٠٦ — منهجيتنا</span></p>
   <h2 class="h2 rv-mask"><span class="en-only">Five principles. No exceptions.</span><span class="ar-only">خمسة مبادئ. بلا استثناء.</span></h2>
   <div class="grid5 stagger">
@@ -790,7 +792,7 @@
 
 <!-- DIVIDER 2 -->
 <section class="divider divider-2 rv-fig" aria-label="Threshold">
-  <figure class="fig"><img src="images/divider-colonnade.jpg" width="2000" height="690" alt="رواق طويل من الحجر الجيري ينفتح نحو الضوء — a long limestone colonnade opening toward light" loading="lazy" decoding="async"></figure>
+  <figure class="fig"><picture><source type="image/webp" srcset="images/divider-colonnade.webp"><img src="images/divider-colonnade.jpg" width="2000" height="690" alt="رواق طويل من الحجر الجيري ينفتح نحو الضوء — a long limestone colonnade opening toward light" loading="lazy" decoding="async"></picture></figure>
   <div class="line">
     <span class="big"><span class="en-only">The right rooms.</span><span class="ar-only">المكان المناسب.</span></span>
     <span class="small"><span class="en-only">Riyadh — Kingdom of Saudi Arabia</span><span class="ar-only">الرياض — المملكة العربية السعودية</span></span>
@@ -808,7 +810,7 @@
         <li><a href="mailto:qshatha@gmail.com">qshatha@gmail.com</a></li>
         <li><a href="https://wa.me/966546117177" target="_blank" rel="noopener">WhatsApp +966 54 611 7177</a></li>
       </ul>
-      <figure class="fig rv-fig"><img src="images/contact-vellum.jpg" width="1400" height="1050" alt="حافظة وثائق ومسطرة نحاسية وقلم على رقّ — a document case, brass rule and pencil on vellum" loading="lazy" decoding="async"></figure>
+      <figure class="fig rv-fig"><picture><source type="image/webp" srcset="images/contact-vellum.webp"><img src="images/contact-vellum.jpg" width="1400" height="1050" alt="حافظة وثائق ومسطرة نحاسية وقلم على رقّ — a document case, brass rule and pencil on vellum" loading="lazy" decoding="async"></picture></figure>
     </div>
     <div class="rv d2">
       <form id="inqForm" novalidate aria-label="Inquiry form — نموذج الطلب">
@@ -859,13 +861,19 @@
   document.getElementById('langBtn').addEventListener('click',()=>{ setLang(root.getAttribute('dir')!=='rtl'); });
 
   const hdr=document.getElementById('hdr'),prog=document.getElementById('prog'),railNum=document.querySelector('.rail .num');
-  const secs=[...document.querySelectorAll('main section')];
+  const secs=[...document.querySelectorAll('main section')]; let secTops=[]; let pageMax=1;
+  function measure(){secTops=secs.map(s=>s.getBoundingClientRect().top+scrollY);pageMax=Math.max(1,document.body.scrollHeight-innerHeight);}
+  measure(); addEventListener('resize',measure,{passive:true}); addEventListener('load',measure);
+  let scrollQueued=false;
   addEventListener('scroll',()=>{
-    hdr.classList.toggle('scrolled',scrollY>40);
-    const max=document.body.scrollHeight-innerHeight;
-    prog.style.setProperty('--p',(scrollY/max*100)+'%');
-    let i=0;secs.forEach((s,k)=>{if(s.getBoundingClientRect().top<innerHeight*.5)i=k});
-    railNum.textContent=String(i+1).padStart(2,'0');
+    if(scrollQueued)return; scrollQueued=true;
+    requestAnimationFrame(()=>{
+      const y=scrollY;
+      hdr.classList.toggle('scrolled',y>40);
+      if(prog)prog.style.setProperty('--p',(y/pageMax*100)+'%');
+      if(railNum){let i=0;const mid=y+innerHeight*.5;for(let k=0;k<secTops.length;k++){if(secTops[k]<mid)i=k;}railNum.textContent=String(i+1).padStart(2,'0');}
+      scrollQueued=false;
+    });
   },{passive:true});
 
   const menuBtn=document.getElementById('menuBtn');
@@ -875,7 +883,8 @@
 
   const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
   // safety net for very fast scrolling: anything already scrolled past is revealed
-  let sweepT=false;addEventListener('scroll',()=>{if(sweepT)return;sweepT=true;requestAnimationFrame(()=>{document.querySelectorAll('.rv:not(.in),.stagger:not(.in),.rv-mask:not(.in),.words:not(.in),.rv-fig:not(.in)').forEach(el=>{if(el.getBoundingClientRect().top<innerHeight*.92)el.classList.add('in','lit')});sweepT=false;});},{passive:true});
+  let pending=[...document.querySelectorAll('.rv,.stagger,.rv-mask,.words,.rv-fig')];
+  let sweepT=false;addEventListener('scroll',()=>{if(sweepT||!pending.length)return;sweepT=true;requestAnimationFrame(()=>{const lim=innerHeight*.92;pending=pending.filter(el=>{if(el.classList.contains('in'))return false;if(el.getBoundingClientRect().top<lim){el.classList.add('in','lit');return false;}return true;});sweepT=false;});},{passive:true});
   document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 
   document.getElementById('inqForm').addEventListener('submit',e=>{
@@ -900,22 +909,23 @@
     });
   }
   // stagger indices
-  document.querySelectorAll('.stagger').forEach(g=>[...g.children].forEach((c,i)=>c.style.setProperty('--i',i)));
+  const prepGroups=()=>document.querySelectorAll('.stagger').forEach(g=>[...g.children].forEach((c,i)=>c.style.setProperty('--i',i)));
   // word illumination
-  document.querySelectorAll('.words').forEach(q=>q.querySelectorAll(':scope > span').forEach(lang=>{
+  const prepWords=()=>document.querySelectorAll('.words').forEach(q=>q.querySelectorAll(':scope > span').forEach(lang=>{
     lang.innerHTML=lang.innerHTML.replace(/(<b>.*?<\/b>|[^\s<]+)/g,m=>`<span class="w">${m}</span>`);
     lang.querySelectorAll('.w').forEach((w,i)=>w.style.setProperty('--i',i));
   }));
   const io2=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in','lit');io2.unobserve(e.target)}}),{threshold:.15});
   function observeAll(){document.querySelectorAll('.stagger,.rv-mask,.words,.rv-fig').forEach(el=>io2.observe(el));}
-  if(!rm){prepMasks();} observeAll();
+  const idle=window.requestIdleCallback||(f=>setTimeout(f,1));
+  prepGroups(); if(!rm){prepMasks();} idle(()=>{prepWords();observeAll();});
   function remask(){ if(rm)return; document.querySelectorAll('.rv-mask').forEach(h=>h.querySelectorAll(':scope > span').forEach(x=>{const ln=[...x.querySelectorAll('.ln')];x.textContent=(ln.length?ln.map(l=>l.textContent).join(' '):x.textContent).replace(/\s+/g,' ').trim()})); prepMasks(); }
   if(document.fonts&&document.fonts.ready){document.fonts.ready.then(remask);} 
   let rt;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(remask,200)});
 
   // parallax on the hero watermark + grid
   const wm=document.querySelector('.hero .wm-bg'), gr=document.querySelector('.hero .grid'), hi=document.querySelector('.hero-img img'), dvs=[...document.querySelectorAll('.divider .fig img')];
-  if(!rm&&wm){let t=false;addEventListener('scroll',()=>{if(t)return;t=true;requestAnimationFrame(()=>{const y=scrollY;wm.style.transform=`translateY(${y*.18}px)`;gr.style.transform=`translateY(${y*.08}px)`;if(hi&&y<innerHeight*1.2)hi.style.transform=`translateY(${y*.25}px)`;dvs.forEach(dv=>{const r=dv.parentElement.getBoundingClientRect();if(r.bottom>0&&r.top<innerHeight){const p=(innerHeight-r.top)/(innerHeight+r.height);dv.style.transform=`translateY(${-p*r.height*.16}px)`;}});t=false;});},{passive:true});}
+  if(!rm&&wm){let t=false;addEventListener('scroll',()=>{if(t)return;t=true;requestAnimationFrame(()=>{const y=scrollY;if(y<innerHeight*1.2){wm.style.transform=`translate3d(0,${y*.18}px,0)`;gr.style.transform=`translate3d(0,${y*.08}px,0)`;if(hi)hi.style.transform=`translate3d(0,${y*.25}px,0)`;}dvs.forEach(dv=>{const r=dv.parentElement.getBoundingClientRect();if(r.bottom>0&&r.top<innerHeight){const p=(innerHeight-r.top)/(innerHeight+r.height);dv.style.transform=`translateY(${-p*r.height*.16}px)`;}});t=false;});},{passive:true});}
 
   // language switch crossfade
   const langBtn=document.getElementById('langBtn');
@@ -929,7 +939,8 @@
     const c=document.querySelector('.cur'); let x=0,y=0,cx=0,cy=0; document.documentElement.classList.add('has-cursor');
     addEventListener('mousemove',e=>{x=e.clientX;y=e.clientY;c.classList.add('on')});
     addEventListener('mouseleave',()=>c.classList.remove('on'));
-    (function loop(){cx+=(x-cx)*.22;cy+=(y-cy)*.22;c.style.left=cx+'px';c.style.top=cy+'px';requestAnimationFrame(loop)})();
+    let raf=null;function loop(){cx+=(x-cx)*.22;cy+=(y-cy)*.22;c.style.transform=`translate3d(${cx}px,${cy}px,0) translate(-50%,-50%)`+(c.classList.contains('big')?' scale(3.2)':'');if(Math.abs(x-cx)+Math.abs(y-cy)>.3)raf=requestAnimationFrame(loop);else raf=null;}
+    addEventListener('mousemove',()=>{if(!raf)raf=requestAnimationFrame(loop)},{passive:true});
     document.querySelectorAll('a,button,.svc,.cell,input,select,textarea').forEach(el=>{el.addEventListener('mouseenter',()=>c.classList.add('big'));el.addEventListener('mouseleave',()=>c.classList.remove('big'));});
   }
 </script>
