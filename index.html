@@ -680,7 +680,7 @@
 </aside>
 
 <header id="hdr">
-  <a class="brand" href="#top" aria-label="Dar Qash">
+  <a class="brand" href="#top" aria-label="دار قاش — Dar Qash">
     <svg class="logo"><use href="#dq-logo"/></svg>
     <span class="wm en-only">DAR QASH</span>
     <span class="wm ar-only">دار قاش</span>
@@ -907,7 +907,7 @@
 <footer>
 <div class="fwrap">
   <div>
-    <svg class="logo-big" aria-label="Dar Qash"><use href="#dq-logo"/></svg>
+    <svg class="logo-big" role="img" aria-label="دار قاش — Dar Qash"><use href="#dq-logo"/></svg>
     <p class="tag"><span class="en-only">We don’t just open doors — we position you in the right rooms.</span><span class="ar-only">لا نكتفي بفتح الأبواب — بل نضعك في المكان المناسب، مع الأشخاص المناسبين.</span></p>
   </div>
   <div>
@@ -937,7 +937,10 @@
   document.getElementById('langBtn').addEventListener('click',()=>{ setLang(root.getAttribute('dir')!=='rtl'); });
 
   const hdr=document.getElementById('hdr'),prog=document.getElementById('prog'),railNum=document.querySelector('.rail .num');
-  const secs=[...document.querySelectorAll('main section')]; let secTops=[]; let pageMax=1;
+  // only sections with a printed .idx label — the hero and the photo dividers are
+  // unnumbered, and counting them made the rail read 11 beside a label saying 08
+  const secs=[...document.querySelectorAll('main section')].filter(s=>s.querySelector('.idx'));
+  let secTops=[]; let pageMax=1;
   function measure(){secTops=secs.map(s=>s.getBoundingClientRect().top+scrollY);pageMax=Math.max(1,document.body.scrollHeight-innerHeight);}
   measure(); addEventListener('resize',measure,{passive:true}); addEventListener('load',measure);
   let scrollQueued=false;
