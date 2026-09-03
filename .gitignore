@@ -6,3 +6,6 @@
 
 # design variants are published for stakeholder review — each carries
 # <meta name="robots" content="noindex,nofollow"> and is not linked from index.html
+
+# local backup of replaced assets — not site content
+images/_prev/
