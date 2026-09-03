@@ -4,430 +4,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>دار قاش — نماذج التصميم | Dar Qash design variants</title>
+    <title>دار قاش — نماذج التصميم</title>
     <meta name="robots" content="noindex,nofollow">
     <meta name="theme-color" content="#14110f">
     <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Italiana&family=Instrument+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400&family=Reem+Kufi:wght@400;500&family=Noto+Kufi+Arabic:wght@400&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@400;500&family=Noto+Kufi+Arabic:wght@400&display=swap"
         rel="stylesheet">
 
     <style>
         :root {
             --night: #14110f;
-            --night-2: #1c1815;
-            --night-3: #26211d;
             --taupe: #b3a08f;
-            --sand: #d9cfc2;
             --bone: #efe8dd;
             --copper: #c98b4b;
             --copper-2: #e0a96a;
             --line: rgba(179, 160, 143, .18);
-            --display: 'Italiana', serif;
-            --body: 'Instrument Sans', sans-serif;
-            --mono: 'IBM Plex Mono', monospace;
-            --ar-display: 'Reem Kufi', sans-serif;
-            --ar-body: 'Noto Kufi Arabic', sans-serif;
-            --px: clamp(1.4rem, 6vw, 5rem);
-            --e: cubic-bezier(.22, 1, .36, 1);
         }
 
-        * {
-            box-sizing: border-box
-        }
+        * { box-sizing: border-box }
 
-        html {
-            background: var(--night);
-            -webkit-text-size-adjust: 100%
-        }
+        html { background: var(--night) }
 
         body {
             margin: 0;
+            min-height: 100vh;
             background: var(--night);
             color: var(--bone);
-            /* Arabic is the primary voice on this page, so the Arabic face,
-               size and leading are the defaults; English is the secondary line. */
-            font-family: var(--ar-body);
-            font-size: 1.125rem;
-            line-height: 1.95;
-            padding: clamp(2.4rem, 7vw, 5rem) var(--px) 5rem;
-        }
-
-        :focus-visible {
-            outline: 2px solid var(--copper-2);
-            outline-offset: 3px
-        }
-
-        .en {
-            font-family: var(--body);
-            font-size: .92rem;
-            line-height: 1.6;
-            letter-spacing: .01em;
-            color: rgba(239, 232, 221, .55);
-            display: block;
-            direction: ltr;
-            text-align: right;
-        }
-
-        header {
-            max-width: 62rem;
-            margin: 0 auto clamp(2.6rem, 6vw, 4.5rem)
-        }
-
-        .idx {
-            font-family: var(--ar-body);
-            font-size: .8125rem;
-            letter-spacing: .08em;
-            color: var(--copper-2);
-            margin: 0 0 1.4rem;
+            font-family: 'Noto Kufi Arabic', sans-serif;
+            font-size: 1.0625rem;
+            line-height: 1.9;
             display: flex;
             align-items: center;
-            gap: 1rem;
+            justify-content: center;
+            padding: clamp(2rem, 8vw, 5rem) clamp(1.4rem, 6vw, 3rem);
         }
 
-        .idx::after {
-            content: "";
-            flex: 1;
-            height: 1px;
-            background: var(--line);
-            max-width: 8rem
-        }
+        main { width: 100%; max-width: 34rem }
 
         h1 {
-            font-family: var(--ar-display);
-            font-weight: 400;
-            font-size: clamp(2rem, 5vw, 3.4rem);
-            line-height: 1.45;
-            margin: 0 0 .5rem;
+            font-family: 'Reem Kufi', sans-serif;
+            font-weight: 500;
+            font-size: clamp(1.5rem, 4vw, 2.1rem);
+            line-height: 1.5;
+            margin: 0 0 .4rem;
             color: var(--bone);
         }
 
-        h1 em {
-            font-style: normal;
-            color: var(--copper-2)
+        .sub {
+            color: var(--taupe);
+            font-size: .9rem;
+            margin: 0 0 2.4rem;
         }
 
-        .h1-en {
-            font-family: var(--display);
-            font-size: clamp(1.3rem, 2.6vw, 1.9rem);
-            line-height: 1.15;
-            color: rgba(239, 232, 221, .5);
-            direction: ltr;
-            text-align: right;
-            margin: 0 0 1.4rem;
+        ol {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            border-top: 1px solid var(--line);
         }
 
-        .lede {
-            color: rgba(239, 232, 221, .76);
-            max-width: 62ch;
-            margin: 0 0 .8rem
+        li { border-bottom: 1px solid var(--line) }
+
+        a {
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+            padding: 1.15rem .2rem;
+            text-decoration: none;
+            color: var(--bone);
+            transition: color .25s, padding-inline-start .25s;
+        }
+
+        a:hover,
+        a:focus-visible {
+            color: var(--copper-2);
+            padding-inline-start: .7rem;
+        }
+
+        a:focus-visible { outline: 2px solid var(--copper-2); outline-offset: 2px }
+
+        .num {
+            font-family: 'Reem Kufi', sans-serif;
+            color: var(--copper);
+            font-size: .9rem;
+            min-width: 1.4rem;
+        }
+
+        .name {
+            font-family: 'Reem Kufi', sans-serif;
+            font-weight: 500;
+            font-size: 1.15rem;
+            flex: 1;
         }
 
         .note {
-            font-family: var(--ar-body);
-            font-size: .9rem;
-            line-height: 1.9;
             color: var(--taupe);
-            margin-top: 1.6rem;
-            max-width: 68ch;
-            border-inline-start: 1px solid var(--line);
-            padding-inline-start: 1.1rem;
+            font-size: .85rem;
+            white-space: nowrap;
         }
 
-        .grid {
-            max-width: 62rem;
-            margin: 0 auto;
-            display: grid;
-            gap: 1.1rem;
-            grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
-        }
-
-        .card {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            text-decoration: none;
-            color: inherit;
-            background: var(--night-2);
-            border: 1px solid var(--line);
-            overflow: hidden;
-            transition: border-color .4s var(--e), transform .5s var(--e);
-        }
-
-        .card:hover,
-        .card:focus-visible {
-            border-color: rgba(224, 169, 106, .45);
-            transform: translateY(-4px);
-        }
-
-        .shot {
-            position: relative;
-            aspect-ratio: 16/9;
-            overflow: hidden;
-            background: var(--night-3);
-        }
-
-        .shot img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            filter: saturate(.9) brightness(.74);
-            transition: transform .8s var(--e), filter .5s var(--e);
-        }
-
-        .card:hover .shot img,
-        .card:focus-visible .shot img {
-            transform: scale(1.03);
-            filter: saturate(.95) brightness(.86);
-        }
-
-        .shot::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, transparent 40%, rgba(20, 17, 15, .82) 100%);
-        }
-
-        .tag {
-            position: absolute;
-            z-index: 2;
-            top: .9rem;
-            inset-inline-start: .9rem;
-            font-family: var(--ar-body);
-            font-size: .75rem;
-            letter-spacing: .04em;
-            color: var(--copper-2);
-            background: rgba(20, 17, 15, .78);
-            border: 1px solid rgba(224, 169, 106, .3);
-            padding: .25rem .6rem;
-        }
-
-        .body {
-            padding: 1.4rem 1.5rem 1.6rem;
-            display: flex;
-            flex-direction: column;
-            flex: 1;
-            gap: .55rem;
-        }
-
-        .card h2 {
-            font-family: var(--ar-display);
-            font-weight: 400;
-            font-size: 1.45rem;
-            line-height: 1.5;
-            margin: 0;
-            color: var(--bone);
-        }
-
-        .card h2 .file {
-            font-family: var(--mono);
-            font-size: .75rem;
-            color: var(--copper-2);
-            display: block;
-            direction: ltr;
-            text-align: right;
-            margin-top: .35rem;
-            letter-spacing: .04em;
-        }
-
-        .card p {
-            margin: 0;
-            font-size: .96rem;
-            line-height: 1.85;
-            color: rgba(239, 232, 221, .74);
-        }
-
-        .meta {
-            margin-top: auto;
-            padding-top: 1rem;
+        .live {
+            margin-top: 2.2rem;
+            padding-top: 1.2rem;
             border-top: 1px solid var(--line);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1rem;
-            font-family: var(--ar-body);
-            font-size: .8rem;
-            color: var(--copper-2);
         }
 
-        .meta .open::after {
-            content: " ←"
-        }
-
-        .meta .stat {
-            color: var(--taupe)
-        }
-
-        .baseline {
-            max-width: 62rem;
-            margin: 1.1rem auto 0
-        }
-
-        .baseline a {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1rem;
-            flex-wrap: wrap;
-            padding: 1.1rem 1.5rem;
-            border: 1px dashed var(--line);
-            text-decoration: none;
-            color: var(--taupe);
-            font-size: .92rem;
-            transition: border-color .4s var(--e), color .4s var(--e);
-        }
-
-        .baseline a:hover,
-        .baseline a:focus-visible {
-            border-color: rgba(224, 169, 106, .4);
-            color: var(--bone);
-        }
+        .live a { color: var(--taupe); font-size: .92rem; padding: .5rem .2rem }
 
         footer {
-            max-width: 62rem;
-            margin: clamp(2.6rem, 6vw, 4rem) auto 0;
-            border-top: 1px solid var(--line);
-            padding-top: 1.4rem;
-            font-size: .82rem;
+            margin-top: 2.4rem;
             color: var(--taupe);
-            line-height: 2.1;
+            font-size: .8rem;
+            line-height: 1.9;
         }
 
-        footer code {
-            font-family: var(--mono);
-            font-size: .78rem;
-            color: var(--sand);
-            direction: ltr;
-            display: inline-block;
-        }
-
-        @media (prefers-reduced-motion:reduce) {
-
-            *,
-            *::before,
-            *::after {
-                transition: none !important;
-                transform: none !important;
-            }
+        @media (max-width:520px) {
+            .note { display: none }
         }
     </style>
 </head>
 
 <body>
+    <main>
+        <h1>نماذج التصميم</h1>
+        <p class="sub">أربع نسخ كاملة — اختر واحدة</p>
 
-    <header>
-        <p class="idx">دار قاش · نماذج التصميم · Design variants</p>
-        <h1>أربع طرقٍ للدخول من <em>البابِ</em> نفسه.</h1>
-        <p class="h1-en">Four ways through the same door.</p>
+        <ol>
+            <li><a href="variant2.html?lang=ar"><span class="num">١</span><span class="name">الغرف الثلاث كجدار
+                        واحد</span><span class="note">جدار متّصل</span></a></li>
+            <li><a href="variant-a-doors.html?lang=ar"><span class="num">٢</span><span class="name">ثلاث غرف
+                        مصوّرة</span><span class="note">أبواب كبيرة</span></a></li>
+            <li><a href="variant-b-lobby.html?lang=ar"><span class="num">٣</span><span class="name">ردهة
+                        الأبواب</span><span class="note">خمسة أبواب</span></a></li>
+            <li><a href="variant-c-lean.html?lang=ar"><span class="num">٤</span><span class="name">النسخة
+                        المختصرة</span><span class="note">الأقصر</span></a></li>
+        </ol>
 
-        <p class="lede">كل نموذج صفحةٌ كاملة قائمة بذاتها — بالعربية والإنجليزية، مع مُبدِّل اللغة ونموذج التواصل
-            يعملان. افتحها جنبًا إلى جنب، وبدِّل اللغة في كلٍّ منها؛ فالعربية هي المكان الذي تصمد فيه فكرة الأبواب
-            أو تنهار.</p>
-        <p class="lede en">Each variant is a complete, self-contained page — full bilingual AR/EN, working language
-            toggle, working inquiry form. The Arabic is where the doors metaphor either holds or falls apart.</p>
+        <div class="live">
+            <a href="index.html">الموقع الحالي المنشور — للمقارنة</a>
+        </div>
 
-        <p class="note">لا شيء من هذه النماذج منشور على الموقع. كلٌّ منها يحمل <code>noindex</code> ولا يظهر في
-            محرّكات البحث، ولا يوجد أي رابط إليه من الصفحة الرئيسية، وخريطة الموقع ما زالت تضمّ الصفحة الرئيسية
-            وحدها. الصفحة الرئيسية <code>index.html</code> لم تتغيّر إطلاقًا.
-            <br>بابُ <strong>السياسات</strong> فارغٌ عن قصد في النماذج الأربعة — هذا المحتوى يجب أن يأتي من العميلة
-            ومحاميها، ولا يصحّ أن نكتبه نيابةً عنهما.
-        </p>
-    </header>
-
-    <main class="grid">
-
-        <a class="card" href="variant2.html?lang=ar">
-            <span class="shot">
-                <span class="tag">الواجهة</span>
-                <picture>
-                    <source type="image/webp" srcset="images/rooms-elevation.webp">
-                    <img src="images/rooms-elevation.jpg" width="1536" height="1024" alt="" loading="lazy"
-                        decoding="async">
-                </picture>
-            </span>
-            <span class="body">
-                <h2>الغرف الثلاث كجدارٍ واحد<span class="file">variant2.html</span></h2>
-                <p>ثلاثة أبوابٍ مصوّرة مرصوفة في جدارٍ متّصل. اختيارُ بابٍ يوسّعه ويُعتِم جارَيه — فتؤدّي الصفحة
-                    ما يَعِد به النص. الحركة كلّها على طبقة العرض وحدها.</p>
-                <span class="meta"><span class="open">افتح</span><span class="stat">٣ غرف · ٨ خدمات</span></span>
-            </span>
-        </a>
-
-        <a class="card" href="variant-a-doors.html?lang=ar">
-            <span class="shot">
-                <span class="tag">الإخراج الفني</span>
-                <picture>
-                    <source type="image/webp" srcset="images/room-1.webp">
-                    <img src="images/room-1.jpg" width="485" height="905" alt="" loading="lazy" decoding="async">
-                </picture>
-            </span>
-            <span class="body">
-                <h2>ثلاث غرفٍ مصوّرة<span class="file">variant-a-doors.html</span></h2>
-                <p>الصور الثلاث تصبح هي الغرف، والخدمات الثماني خلفها. عرض البنك محدود بـ ١٠٤٠ بكسل حتى يبقى القوس
-                    كاملًا بلا اقتصاص، واسم الغرفة محفورٌ على الباب فوق تعتيمٍ مقيس.</p>
-                <span class="meta"><span class="open">افتح</span><span class="stat">٣ أبواب · ٨٨ ك.ب</span></span>
-            </span>
-        </a>
-
-        <a class="card" href="variant-b-lobby.html?lang=ar">
-            <span class="shot">
-                <span class="tag">التنقّل</span>
-                <picture>
-                    <source type="image/webp" srcset="images/room-2.webp">
-                    <img src="images/room-2.jpg" width="510" height="905" alt="" loading="lazy" decoding="async">
-                </picture>
-            </span>
-            <span class="body">
-                <h2>ردهة الأبواب<span class="file">variant-b-lobby.html</span></h2>
-                <p>ممرٌّ من خمسة أبوابٍ تحت الواجهة مباشرة: الغرف الثلاث، ثم المنهج والسياسات. الغرف مُصوّرة
-                    والمجالات ليست كذلك — تمييزٌ مقصود. ولكل غرفةٍ رابطٌ مباشر.</p>
-                <span class="meta"><span class="open">افتح</span><span class="stat">٥ أبواب · إزاحة ٠٫٠١٦</span></span>
-            </span>
-        </a>
-
-        <a class="card" href="variant-c-lean.html?lang=ar">
-            <span class="shot">
-                <span class="tag">النسخة المختصرة</span>
-                <picture>
-                    <source type="image/webp" srcset="images/hero-doors.webp">
-                    <img src="images/hero-doors.jpg" width="1672" height="941" alt="" loading="lazy"
-                        decoding="async">
-                </picture>
-            </span>
-            <span class="body">
-                <h2>النسخة المختصرة<span class="file">variant-c-lean.html</span></h2>
-                <p>ردٌّ مباشر على ملاحظة المحامي بكثرة التوسّع: قسمٌ كامل محذوف، وأربع فقرات مختصرة، وزرّ التواصل
-                    انتقل إلى الشريط العلوي، والخدمات الثماني صارت أبوابًا تُفتح بلوحة المفاتيح.</p>
-                <span class="meta"><span class="open">افتح</span><span class="stat">أقصر بـ ١٩٠٠ بكسل</span></span>
-            </span>
-        </a>
-
+        <footer>
+            لا شيء من هذه النماذج منشور. باب السياسات فارغ عن قصد في الجميع.
+        </footer>
     </main>
-
-    <div class="baseline">
-        <a href="index.html?lang=ar">
-            <span>الموقع الحالي المنشور — دون أي تغيير، للمقارنة <span class="en">index.html — the live site,
-                    unchanged</span></span>
-            <span>افتح ←</span>
-        </a>
-    </div>
-
-    <div class="baseline" style="margin-top:.6rem">
-        <a href="variants.html?en=1" onclick="[...document.querySelectorAll('.card,.baseline a')].forEach(a=>{if(a.href)a.href=a.href.replace('lang=ar','lang=en')});this.textContent='الروابط تفتح بالإنجليزية الآن ✓';return false;">
-            <span>افتح النماذج بالإنجليزية بدلًا من العربية <span class="en">switch these links to English</span></span>
-            <span>EN ←</span>
-        </a>
-    </div>
-
-    <footer>
-        كل نموذج: ملفٌّ واحد ثابت · بلا إطار عمل · بلا خطوة بناء · تكافؤ النصّ العربي والإنجليزي مُتحقَّق منه ·
-        <code>noindex</code>.<br>
-        الروابط المباشرة تعمل لكل غرفة — مثال: <code>variant2.html#svc-02</code> يفتح غرفة الوساطة مباشرة.
-    </footer>
-
 </body>
 
 </html>
