@@ -1040,7 +1040,7 @@
     });
   }
   function setLang(ar){root.setAttribute('dir',ar?'rtl':'ltr');root.setAttribute('lang',ar?'ar':'en');document.title=ar?'دار قاش — المكان المناسب | Dar Qash':'Dar Qash — The Right Rooms';fill(ar);setLabels(ar);try{localStorage.setItem('dq_lang',ar?'ar':'en')}catch(e){}}
-  (function(){let saved=null;try{saved=localStorage.getItem('dq_lang')}catch(e){} setLang(saved?saved==='ar':true);})();
+  (function(){var q=null;try{q=new URLSearchParams(location.search).get('lang')}catch(e){}var saved=null;try{saved=localStorage.getItem('dq_lang')}catch(e){}setLang(q?q!=='en':(saved?saved==='ar':true));})();
   document.getElementById('langBtn').addEventListener('click',()=>{ setLang(root.getAttribute('dir')!=='rtl'); });
 
   const hdr=document.getElementById('hdr'),prog=document.getElementById('prog'),railNum=document.querySelector('.rail .num');

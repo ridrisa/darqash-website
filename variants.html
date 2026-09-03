@@ -339,7 +339,7 @@
 
     <main class="grid">
 
-        <a class="card" href="variant2.html">
+        <a class="card" href="variant2.html?lang=ar">
             <span class="shot">
                 <span class="tag">الواجهة</span>
                 <picture>
@@ -356,7 +356,7 @@
             </span>
         </a>
 
-        <a class="card" href="variant-a-doors.html">
+        <a class="card" href="variant-a-doors.html?lang=ar">
             <span class="shot">
                 <span class="tag">الإخراج الفني</span>
                 <picture>
@@ -372,7 +372,7 @@
             </span>
         </a>
 
-        <a class="card" href="variant-b-lobby.html">
+        <a class="card" href="variant-b-lobby.html?lang=ar">
             <span class="shot">
                 <span class="tag">التنقّل</span>
                 <picture>
@@ -388,7 +388,7 @@
             </span>
         </a>
 
-        <a class="card" href="variant-c-lean.html">
+        <a class="card" href="variant-c-lean.html?lang=ar">
             <span class="shot">
                 <span class="tag">النسخة المختصرة</span>
                 <picture>
@@ -408,10 +408,17 @@
     </main>
 
     <div class="baseline">
-        <a href="index.html">
+        <a href="index.html?lang=ar">
             <span>الموقع الحالي المنشور — دون أي تغيير، للمقارنة <span class="en">index.html — the live site,
                     unchanged</span></span>
             <span>افتح ←</span>
+        </a>
+    </div>
+
+    <div class="baseline" style="margin-top:.6rem">
+        <a href="variants.html?en=1" onclick="[...document.querySelectorAll('.card,.baseline a')].forEach(a=>{if(a.href)a.href=a.href.replace('lang=ar','lang=en')});this.textContent='الروابط تفتح بالإنجليزية الآن ✓';return false;">
+            <span>افتح النماذج بالإنجليزية بدلًا من العربية <span class="en">switch these links to English</span></span>
+            <span>EN ←</span>
         </a>
     </div>
 
