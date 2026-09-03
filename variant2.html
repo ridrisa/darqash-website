@@ -25,6 +25,7 @@
 {"@context":"https://schema.org","@type":"ProfessionalService","name":"Dar Qash — دار قاش","legalName":"Dar Qash L.L.C","identifier":"7052329658","url":"https://www.darqash.com/","email":"info@darqash.com","telephone":"+966546117177","address":{"@type":"PostalAddress","addressLocality":"Riyadh","addressCountry":"SA"},"areaServed":"SA","knowsLanguage":["ar","en"],"slogan":"We don’t just open doors — we position you in the right rooms.","description":"Saudi strategic-relations and business services firm: communications, commercial and real-estate brokerage, market entry, and confidential representation."}
 </script>
 
+    <link rel="preload" as="image" href="images/hero-doors.webp" type="image/webp" fetchpriority="high">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -4297,6 +4298,207 @@
             font-size: .86em;
             line-height: 1.5;
         }
+    
+        /* ==================================================================
+           ARCHES — removed everywhere except the services elevation.
+           The doorway shape is load-bearing in the services elevation, where
+           it is the actual metaphor. Applied to a quote panel and to client
+           photographs it is decoration, and repeating it in every section
+           dilutes the one place it means something. Both revert to the
+           square-cornered editorial frame the rest of the page uses.
+           ================================================================== */
+        .vision,
+        .serve .pair .fig,
+        .approach,
+        .hero::before,
+        .hero::after,
+        .about-grid .fig,
+        .band-grid .fig,
+        .divider,
+        .divider .fig,
+        .contact .fig,
+        .contact .two>div:last-child {
+            border-radius: 0 !important;
+        }
+
+        .vision::before,
+        .vision::after,
+        .serve .pair .fig::before,
+        .serve .pair .fig::after,
+        .about-grid .fig::before,
+        .band-grid .fig::before,
+        .divider::before,
+        .divider::after,
+        .contact .fig::before {
+            border-radius: 0 !important;
+        }
+
+        .serve .pair .fig img,
+        .about-grid .fig img,
+        .band-grid .fig img,
+        .divider .fig img,
+        .contact .fig img {
+            border-radius: 0 !important;
+        }
+
+        /* The three the sweep missed.
+           .hero::before / .hero::after draw two hairline arches ON TOP of the
+           headline: a drawn arch laid over a photographed one, springing from
+           a different centre, so the curve cuts across "open doors." and "the
+           right rooms." Removing them is the single biggest gain on the page.
+           .approach carried 34%/8% on a 1382px-wide panel — far too shallow to
+           read as a doorway, so it read as a rectangle with a warped top edge,
+           which is the template-flourish failure in its purest form. */
+        .hero::before,
+        .hero::after {
+            display: none !important;
+        }
+
+        .approach {
+            border-radius: 0 !important;
+        }
+
+        /* ==================================================================
+           THE ELEVATION IS NOW THE ONLY ARCH ON THE PAGE, so it has to carry.
+           On desktop it does. Below 900px each door was forced into an
+           aspect-ratio:1.35 landscape box; room-1/2/3.jpg are ~485x905
+           portraits, so `cover` revealed only ~40% of their height, anchored
+           at 42% — the band from roughly 22% to 62%. The arch crown sits at
+           about 8-20%, so the one place the metaphor is literal lost its arch
+           to the crop and read as three panels of plain dark door.
+           A squarer box and a higher anchor put the crown back in frame.
+           Scoped to the closed state so an opened room still relaxes to auto.
+           ================================================================== */
+        @media (max-width:900px) {
+
+            #services .service-door:not(.open):not(:target) {
+                aspect-ratio: 1.02;
+            }
+
+            .rd-photo img {
+                object-position: center 27%;
+            }
+        }
+
+        /* The open-state crop (chosen room losing its arch crown) is fixed
+           further down in OPEN-STATE CROP + PANEL MEASURE, which also narrows
+           the open track and widens the room panel. No rule needed here. */
+
+        /* ==================================================================
+           3. THE INTRO — this was the "hanging".
+           On every new TAB (the flag is sessionStorage, not localStorage) two
+           limestone panels covered the whole viewport, and the reveal stagger
+           ran to 2.4s. Opening a variant from the chooser therefore sat behind
+           closed doors for ~1.9s before anything appeared, and the panels also
+           pulled a 179 KB image before they could even render correctly.
+           For a review page that is opened repeatedly, that reads as a hang.
+           Intro removed; the content-reveal stagger is cut to a brief settle.
+           ================================================================== */
+        html.first-visit .door,
+        html.first-visit .door-seam {
+            display: none !important;
+        }
+
+        :root {
+            --t1: .12s;
+            --t2: .2s;
+            --t3: .3s;
+            --t4: .4s;
+        }
+    
+        /* Reem Kufi is monoline; at 400 it reads light beside Italiana's
+           high-contrast display. The 500 weight is already in the font
+           request (unused until now) — Arabic is the primary language here
+           and its headings should carry the same authority. */
+        html[dir="rtl"] h1,
+        html[dir="rtl"] h2,
+        html[dir="rtl"] h3,
+        html[dir="rtl"] .h2,
+        html[dir="rtl"] .rd-plate h3 {
+            font-weight: 500;
+        }
+
+        /* larger type wants proportionally tighter leading; the RTL lede was
+           carrying body leading (1.9) at display size */
+        html[dir="rtl"] .lede {
+            line-height: 1.65;
+        }
+
+        /* Arabic needs a size bump in the elevation too — the body already
+           does this globally, but the room lists were left at Latin sizes */
+        html[dir="rtl"] .rd-list li {
+            font-size: clamp(.98rem, 1.15vw, 1.12rem);
+        }
+
+        html[dir="rtl"] .rd-plate .rd-lede {
+            font-size: var(--t-md);
+        }
+
+        html[dir="rtl"] .rd-plate .rn {
+            letter-spacing: 0;
+        }
+    
+        /* ==================================================================
+           OPEN-STATE CROP + PANEL MEASURE
+           The new door photographs are 1024x1536 (ratio .67). Widening a door
+           to 2.3fr made its box ~1.23 landscape, so `cover` cropped hard
+           vertically and threw the arch crown — the one literal arch on the
+           page — out of frame. Narrower open track keeps the box closer to the
+           source ratio, and a higher anchor keeps the crown in.
+           The room panel was also ~231px of content width, so every service
+           wrapped to 4-5 ragged lines with its tail in the gradient fade.
+           ================================================================== */
+        .rooms3:has(#svc-01.open),
+        .rooms3:has(#svc-01:target) {
+            grid-template-columns: 1.95fr .9fr .9fr;
+        }
+
+        .rooms3:has(#svc-02.open),
+        .rooms3:has(#svc-02:target) {
+            grid-template-columns: .9fr 1.95fr .9fr;
+        }
+
+        .rooms3:has(#svc-03.open),
+        .rooms3:has(#svc-03:target) {
+            grid-template-columns: .9fr .9fr 1.95fr;
+        }
+
+        .service-door.open .rd-photo img,
+        .service-door:target .rd-photo img {
+            object-position: center 30%;
+        }
+
+        .door-room {
+            width: min(58%, 30rem);
+        }
+
+        .rd-list li {
+            grid-template-columns: 2.2rem 1fr;
+        }
+
+        /* ==================================================================
+           OPEN ROOM PANEL — align to the reading edge.
+           .door-room still carried `text-align: center` from when it was a
+           centred overlay across the whole door. Now that it is a 362px
+           column, centring gave every service a symmetric rag ("Commercial
+           Brokerage & / Intermediation"), pushed the 04/05/06 numerals off
+           their own text, and broke the numeral column that makes the
+           headline's "eight" countable in the first place. The closed-door
+           nameplates (.rd-plate) are already `text-align: start`, so this is
+           a leftover rather than a decision. `start`, not `left`, so Arabic
+           aligns right without a separate RTL rule.
+           ================================================================== */
+        .door-room {
+            text-align: start;
+        }
+    
+        /* The footer now sits directly beneath the full-bleed gate photograph.
+           A 131 KB texture wash behind a photograph is noise you cannot see —
+           replaced with the grain overlay already loaded for the rest of the page. */
+        footer::before {
+            background: url(images/grain.png) repeat !important;
+            opacity: .06 !important;
+        }
     </style>
     <noscript>
         <style>
@@ -4333,6 +4535,7 @@
         // Doors open once per browser session. Later visits load straight into the hero.
         (function () {
             try {
+                if (false) {   // intro doors disabled: they read as a hang when the page is opened repeatedly
                 if (!sessionStorage.getItem('dq_doors') && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
                     document.documentElement.classList.add('first-visit');
                     var pl = document.createElement('link'); pl.rel = 'preload'; pl.as = 'image'; pl.href = 'images/doors-limestone.jpg'; document.head.appendChild(pl);
@@ -4348,6 +4551,7 @@
                     };
                     document.addEventListener('DOMContentLoaded', fit);
                     setTimeout(() => document.querySelectorAll('.door,.door-seam').forEach(d => d.remove()), 2600);
+                }
                 }
             } catch (e) { }
         })();
@@ -4402,7 +4606,7 @@
             <div class="hero-img" aria-hidden="true">
                 <picture>
                     <source type="image/webp" srcset="images/hero-doors.webp"><img src="images/hero-doors.jpg"
-                        width="1672" height="941" alt="" fetchpriority="high">
+                        width="1500" height="844" alt="" fetchpriority="high">
                 </picture>
             </div>
             <div class="grid" aria-hidden="true"></div>
@@ -4533,8 +4737,8 @@
             <div class="ledger stagger rooms3">
                 <div class="svc service-door" id="svc-01" role="button" tabindex="0" aria-expanded="false">
                     <picture class="rd-photo">
-                        <source type="image/webp" srcset="images/room-1.webp"><img src="images/room-1.jpg"
-                            width="485" height="905" alt="" loading="lazy" decoding="async">
+                        <source type="image/webp" srcset="images/room-1-820.webp 820w, images/room-1-1240.webp 1240w" sizes="(max-width:900px) 92vw, 660px"><img src="images/room-1.jpg"
+                            width="1024" height="1536" alt="" loading="lazy" decoding="async">
                     </picture>
                     <div class="rd-plate">
                         <span class="rn"><span class="en-only">I</span><span class="ar-only">١</span></span>
@@ -4543,19 +4747,19 @@
                         <span class="rd-cue"><span class="en-only">Enter</span><span class="ar-only">ادخل</span></span>
                     </div>
                     <div class="door-room">
-                        <p class="rd-eyebrow"><span class="en-only">Inside this room</span><span class="ar-only">داخل هذه الغرفة</span></p>
+                        <p class="rd-eyebrow"><span class="en-only">Three doors in this room</span><span class="ar-only">ثلاثة أبواب في هذه الغرفة</span></p>
                         <ul class="rd-list">
-                        <li><span class="sn" aria-hidden="true">01</span><span class="rd-name"><span class="en-only">Strategic PR &amp; Communications</span><span class="ar-only">العلاقات العامة الاستراتيجية والاتصال</span></span><span class="rd-desc"><span class="en-only">Reputation positioning, strategic messaging, and professional representation.</span><span class="ar-only">بناء السمعة، وإدارة الرسائل، والتمثيل المهني.</span></span></li>
-                        <li><span class="sn" aria-hidden="true">02</span><span class="rd-name"><span class="en-only">Government &amp; Institutional Relations</span><span class="ar-only">العلاقات الحكومية والمؤسسية</span></span><span class="rd-desc"><span class="en-only">Engaging institutions and senior stakeholders with the right protocol.</span><span class="ar-only">التواصل مع الجهات المؤسسية وأصحاب القرار وفق البروتوكول الصحيح.</span></span></li>
-                        <li><span class="sn" aria-hidden="true">03</span><span class="rd-name"><span class="en-only">Confidential Advisory &amp; Private Networking</span><span class="ar-only">الاستشارات السرية والعلاقات الخاصة</span></span><span class="rd-desc"><span class="en-only">Discreet advisory, private meetings, and curated networking.</span><span class="ar-only">استشارات بسرية عالية، واجتماعات خاصة، وشبكة علاقات منتقاة.</span></span></li>
+                        <li><span class="sn" aria-hidden="true"><span class="en-only">01</span><span class="ar-only">٠١</span></span><span class="rd-name"><span class="en-only">Strategic PR &amp; Communications</span><span class="ar-only">العلاقات العامة الاستراتيجية والاتصال</span></span><span class="rd-desc"><span class="en-only">Reputation positioning, strategic messaging, and professional representation.</span><span class="ar-only">بناء السمعة، وإدارة الرسائل، والتمثيل المهني.</span></span></li>
+                        <li><span class="sn" aria-hidden="true"><span class="en-only">02</span><span class="ar-only">٠٢</span></span><span class="rd-name"><span class="en-only">Government &amp; Institutional Relations</span><span class="ar-only">العلاقات الحكومية والمؤسسية</span></span><span class="rd-desc"><span class="en-only">Engaging institutions and senior stakeholders with the right protocol.</span><span class="ar-only">التواصل مع الجهات المؤسسية وأصحاب القرار وفق البروتوكول الصحيح.</span></span></li>
+                        <li><span class="sn" aria-hidden="true"><span class="en-only">03</span><span class="ar-only">٠٣</span></span><span class="rd-name"><span class="en-only">Confidential Advisory &amp; Private Networking</span><span class="ar-only">الاستشارات السرية والعلاقات الخاصة</span></span><span class="rd-desc"><span class="en-only">Discreet advisory, private meetings, and curated networking.</span><span class="ar-only">استشارات بسرية عالية، واجتماعات خاصة، وشبكة علاقات منتقاة.</span></span></li>
                         </ul>
                         <span class="door-close" aria-hidden="true">×</span>
                     </div>
                 </div>
                 <div class="svc service-door" id="svc-02" role="button" tabindex="0" aria-expanded="false">
                     <picture class="rd-photo">
-                        <source type="image/webp" srcset="images/room-2.webp"><img src="images/room-2.jpg"
-                            width="485" height="905" alt="" loading="lazy" decoding="async">
+                        <source type="image/webp" srcset="images/room-2-820.webp 820w, images/room-2-1240.webp 1240w" sizes="(max-width:900px) 92vw, 660px"><img src="images/room-2.jpg"
+                            width="1024" height="1536" alt="" loading="lazy" decoding="async">
                     </picture>
                     <div class="rd-plate">
                         <span class="rn"><span class="en-only">II</span><span class="ar-only">٢</span></span>
@@ -4564,19 +4768,19 @@
                         <span class="rd-cue"><span class="en-only">Enter</span><span class="ar-only">ادخل</span></span>
                     </div>
                     <div class="door-room">
-                        <p class="rd-eyebrow"><span class="en-only">Inside this room</span><span class="ar-only">داخل هذه الغرفة</span></p>
+                        <p class="rd-eyebrow"><span class="en-only">Three doors in this room</span><span class="ar-only">ثلاثة أبواب في هذه الغرفة</span></p>
                         <ul class="rd-list">
-                        <li><span class="sn" aria-hidden="true">04</span><span class="rd-name"><span class="en-only">Commercial Brokerage &amp; Intermediation</span><span class="ar-only">الوساطة التجارية والربط بين الأعمال</span></span><span class="rd-desc"><span class="en-only">Connecting companies, investors, suppliers, partners, and decision-makers.</span><span class="ar-only">ربط الشركات والمستثمرين والموردين والشركاء وصنّاع القرار.</span></span></li>
-                        <li><span class="sn" aria-hidden="true">05</span><span class="rd-name"><span class="en-only">Real Estate Brokerage &amp; Property</span><span class="ar-only">الوساطة العقارية والفرص العقارية</span></span><span class="rd-desc"><span class="en-only">Introductions between owners, investors, buyers, and developers.</span><span class="ar-only">التعريف بين الملاك والمستثمرين والمشترين والمطورين.</span></span></li>
-                        <li><span class="sn" aria-hidden="true">06</span><span class="rd-name"><span class="en-only">High-Level Introductions &amp; Deal Facilitation</span><span class="ar-only">التعريف رفيع المستوى وتسهيل الصفقات</span></span><span class="rd-desc"><span class="en-only">Moving credible opportunities toward productive discussions.</span><span class="ar-only">تحويل الفرص الجادة إلى مباحثات عملية.</span></span></li>
+                        <li><span class="sn" aria-hidden="true"><span class="en-only">04</span><span class="ar-only">٠٤</span></span><span class="rd-name"><span class="en-only">Commercial Brokerage &amp; Intermediation</span><span class="ar-only">الوساطة التجارية والربط بين الأعمال</span></span><span class="rd-desc"><span class="en-only">Connecting companies, investors, suppliers, partners, and decision-makers.</span><span class="ar-only">ربط الشركات والمستثمرين والموردين والشركاء وصنّاع القرار.</span></span></li>
+                        <li><span class="sn" aria-hidden="true"><span class="en-only">05</span><span class="ar-only">٠٥</span></span><span class="rd-name"><span class="en-only">Real Estate Brokerage &amp; Property</span><span class="ar-only">الوساطة العقارية والفرص العقارية</span></span><span class="rd-desc"><span class="en-only">Introductions between owners, investors, buyers, and developers.</span><span class="ar-only">التعريف بين الملاك والمستثمرين والمشترين والمطورين.</span></span></li>
+                        <li><span class="sn" aria-hidden="true"><span class="en-only">06</span><span class="ar-only">٠٦</span></span><span class="rd-name"><span class="en-only">High-Level Introductions &amp; Deal Facilitation</span><span class="ar-only">التعريف رفيع المستوى وتسهيل الصفقات</span></span><span class="rd-desc"><span class="en-only">Moving credible opportunities toward productive discussions.</span><span class="ar-only">تحويل الفرص الجادة إلى مباحثات عملية.</span></span></li>
                         </ul>
                         <span class="door-close" aria-hidden="true">×</span>
                     </div>
                 </div>
                 <div class="svc service-door" id="svc-03" role="button" tabindex="0" aria-expanded="false">
                     <picture class="rd-photo">
-                        <source type="image/webp" srcset="images/room-3.webp"><img src="images/room-3.jpg"
-                            width="485" height="905" alt="" loading="lazy" decoding="async">
+                        <source type="image/webp" srcset="images/room-3-820.webp 820w, images/room-3-1240.webp 1240w" sizes="(max-width:900px) 92vw, 660px"><img src="images/room-3.jpg"
+                            width="1024" height="1536" alt="" loading="lazy" decoding="async">
                     </picture>
                     <div class="rd-plate">
                         <span class="rn"><span class="en-only">III</span><span class="ar-only">٣</span></span>
@@ -4585,10 +4789,10 @@
                         <span class="rd-cue"><span class="en-only">Enter</span><span class="ar-only">ادخل</span></span>
                     </div>
                     <div class="door-room">
-                        <p class="rd-eyebrow"><span class="en-only">Inside this room</span><span class="ar-only">داخل هذه الغرفة</span></p>
+                        <p class="rd-eyebrow"><span class="en-only">Two doors in this room</span><span class="ar-only">بابان في هذه الغرفة</span></p>
                         <ul class="rd-list">
-                        <li><span class="sn" aria-hidden="true">07</span><span class="rd-name"><span class="en-only">Business Development &amp; Partnerships</span><span class="ar-only">تطوير الأعمال والشراكات الاستراتيجية</span></span><span class="rd-desc"><span class="en-only">Opportunities, partners, and collaboration pathways for sustainable growth.</span><span class="ar-only">الفرص والشركاء ومسارات التعاون التي تدعم النمو المستدام.</span></span></li>
-                        <li><span class="sn" aria-hidden="true">08</span><span class="rd-name"><span class="en-only">Market Entry &amp; Local Representation</span><span class="ar-only">دخول السوق والتمثيل المحلي</span></span><span class="rd-desc"><span class="en-only">Local representation and strategic guidance for international businesses.</span><span class="ar-only">التمثيل المحلي والتوجيه الاستراتيجي للشركات الدولية.</span></span></li>
+                        <li><span class="sn" aria-hidden="true"><span class="en-only">07</span><span class="ar-only">٠٧</span></span><span class="rd-name"><span class="en-only">Business Development &amp; Partnerships</span><span class="ar-only">تطوير الأعمال والشراكات الاستراتيجية</span></span><span class="rd-desc"><span class="en-only">Opportunities, partners, and collaboration pathways for sustainable growth.</span><span class="ar-only">الفرص والشركاء ومسارات التعاون التي تدعم النمو المستدام.</span></span></li>
+                        <li><span class="sn" aria-hidden="true"><span class="en-only">08</span><span class="ar-only">٠٨</span></span><span class="rd-name"><span class="en-only">Market Entry &amp; Local Representation</span><span class="ar-only">دخول السوق والتمثيل المحلي</span></span><span class="rd-desc"><span class="en-only">Local representation and strategic guidance for international businesses.</span><span class="ar-only">التمثيل المحلي والتوجيه الاستراتيجي للشركات الدولية.</span></span></li>
                         </ul>
                         <span class="door-close" aria-hidden="true">×</span>
                     </div>
@@ -4679,32 +4883,32 @@
             <h2 class="h2 rv-mask"><span class="en-only">Five principles. No exceptions.</span><span
                     class="ar-only">خمسة مبادئ. بلا استثناء.</span></h2>
             <div class="grid5 stagger">
-                <div class="cell"><span class="k">I</span>
+                <div class="cell"><span class="k"><span class="en-only">I</span><span class="ar-only">١</span></span>
                     <h3><span class="en-only">Discretion</span><span class="ar-only">الخصوصية</span></h3>
                     <p><span class="en-only">Sensitive engagements are handled with care and professional
                             confidentiality.</span><span class="ar-only">التعامل مع الملفات الحساسة بعناية ومهنية
                             وسرية.</span></p>
                 </div>
-                <div class="cell"><span class="k">II</span>
+                <div class="cell"><span class="k"><span class="en-only">II</span><span class="ar-only">٢</span></span>
                     <h3><span class="en-only">Relevance</span><span class="ar-only">الملاءمة</span></h3>
                     <p><span class="en-only">We focus on introductions and opportunities aligned with the client’s
                             objectives.</span><span class="ar-only">التركيز على التعريفات والفرص المتوافقة مع أهداف
                             العميل.</span></p>
                 </div>
-                <div class="cell"><span class="k">III</span>
+                <div class="cell"><span class="k"><span class="en-only">III</span><span class="ar-only">٣</span></span>
                     <h3><span class="en-only">Cultural Intelligence</span><span class="ar-only">الفهم الثقافي</span>
                     </h3>
                     <p><span class="en-only">We understand the importance of local context, protocol, and business
                             culture.</span><span class="ar-only">مراعاة السياق المحلي والبروتوكول وثقافة الأعمال.</span>
                     </p>
                 </div>
-                <div class="cell"><span class="k">IV</span>
+                <div class="cell"><span class="k"><span class="en-only">IV</span><span class="ar-only">٤</span></span>
                     <h3><span class="en-only">Relationship-Driven</span><span class="ar-only">بناء العلاقات</span></h3>
                     <p><span class="en-only">We prioritize long-term relationships over transactional
                             connections.</span><span class="ar-only">إعطاء الأولوية للعلاقات طويلة الأمد بدلًا من
                             العلاقات العابرة.</span></p>
                 </div>
-                <div class="cell"><span class="k">V</span>
+                <div class="cell"><span class="k"><span class="en-only">V</span><span class="ar-only">٥</span></span>
                     <h3><span class="en-only">Results-Oriented</span><span class="ar-only">التركيز على النتائج</span>
                     </h3>
                     <p><span class="en-only">We aim to turn relationships and opportunities into meaningful business
@@ -4813,8 +5017,8 @@
     <!-- SIGN-OFF — the gate closes the page; the lockup lives in the photograph -->
     <section class="gate rv-fig" aria-label="Dar Qash — دار قاش">
         <picture>
-            <source type="image/webp" srcset="images/footer-gate.webp"><img src="images/footer-gate.jpg" width="1672"
-                height="941" alt="" loading="lazy" decoding="async">
+            <source type="image/webp" srcset="images/footer-gate.webp"><img src="images/footer-gate.jpg" width="1500"
+                height="844" alt="" loading="lazy" decoding="async">
         </picture>
     </section>
 
@@ -5139,6 +5343,8 @@
                 });
                 door.classList.toggle('open', open);
                 door.setAttribute('aria-expanded', open ? 'true' : 'false');
+                /* clear the fragment so :target cannot keep a second room open */
+                if (location.hash) { try { history.replaceState(null, '', location.pathname + location.search) } catch (e) { } }
             }
 
             doors.forEach(door => {
@@ -5172,8 +5378,8 @@
                the initial call already works, but the door must survive the
                ~2.4s first-visit intro without the visitor touching anything. */
             openFromHash();
-            addEventListener('load', openFromHash);
-            setTimeout(openFromHash, 2700);
+            /* No load/timeout re-assert: the intro that justified it is gone, and
+               re-running this reopened a room 2.7s after the visitor closed it. */
         })();
 
     </script>
