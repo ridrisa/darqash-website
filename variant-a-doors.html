@@ -23,6 +23,7 @@
 {"@context":"https://schema.org","@type":"ProfessionalService","name":"Dar Qash — دار قاش","legalName":"Dar Qash L.L.C","identifier":"7052329658","url":"https://www.darqash.com/","email":"info@darqash.com","telephone":"+966546117177","address":{"@type":"PostalAddress","addressLocality":"Riyadh","addressCountry":"SA"},"areaServed":"SA","knowsLanguage":["ar","en"],"slogan":"We don’t just open doors — we position you in the right rooms.","description":"Saudi strategic-relations and business services firm: communications, commercial and real-estate brokerage, market entry, and confidential representation."}
 </script>
 
+<link rel="preload" as="image" href="images/hero-doors.webp" type="image/webp" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Instrument+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400&family=Reem+Kufi:wght@400;500&family=Noto+Kufi+Arabic:wght@400&display=swap" rel="stylesheet">
@@ -223,7 +224,7 @@
     text-align:end;line-height:2;opacity:0;animation:rise 1s var(--t4,.9s) forwards;
   }
   html[dir="rtl"] .hero .meta{font-family:var(--ar-body);letter-spacing:.05em}
-  html.first-visit{--t1:1.5s;--t2:1.7s;--t3:2.1s;--t4:2.4s}
+  :root{--t1:.12s;--t2:.2s;--t3:.3s;--t4:.4s}
   @keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
   @keyframes fade{to{opacity:1}}
   @media (prefers-reduced-motion:reduce){
@@ -503,7 +504,7 @@
   footer .big{font-family:var(--display);font-size:clamp(2.6rem,7vw,6rem);color:var(--bone);line-height:1;letter-spacing:.08em}
   html[dir="rtl"] footer .big{font-family:var(--ar-display);letter-spacing:0}
   footer .tag{margin-top:1rem;max-width:32ch;line-height:1.8}
-  footer::before{content:"";position:absolute;inset:0;background:url(images/texture-slate.jpg) center/cover;opacity:.35;pointer-events:none}
+  footer::before{content:"";position:absolute;inset:0;background:url(images/grain.png) center/cover;opacity:.35;pointer-events:none}
   footer > *{position:relative;z-index:1}
   footer a{text-decoration:none;color:var(--sand)}footer a:hover{color:var(--copper-2)}
   footer p{line-height:2.2}
@@ -677,6 +678,7 @@
   // Doors open once per browser session. Later visits load straight into the hero.
   (function(){
     try{
+      if(false){   /* intro disabled: it read as a hang on a page opened repeatedly for review */
       if(!sessionStorage.getItem('dq_doors') && !matchMedia('(prefers-reduced-motion: reduce)').matches){
         document.documentElement.classList.add('first-visit');
         var pl=document.createElement('link');pl.rel='preload';pl.as='image';pl.href='images/doors-limestone.jpg';document.head.appendChild(pl);
@@ -691,6 +693,7 @@
         };
         document.addEventListener('DOMContentLoaded',fit);
         setTimeout(()=>document.querySelectorAll('.door,.door-seam').forEach(d=>d.remove()),2600);
+      }
       }
     }catch(e){}
   })();
@@ -804,7 +807,7 @@
   <div class="rooms stagger">
     <details class="dr">
       <summary>
-        <picture><source type="image/webp" srcset="images/room-1.webp"><img class="face" src="images/room-1.jpg" width="485" height="905" alt="باب أزرق داكن مُشرَع على غرفة مضاءة — a blue-black door standing ajar onto a lit room" loading="lazy" decoding="async"></picture>
+        <picture><source type="image/webp" srcset="images/room-1-820.webp 820w, images/room-1-1240.webp 1240w" sizes="(max-width:900px) 92vw, 660px"><img class="face" src="images/room-1.jpg" width="485" height="905" alt="باب أزرق داكن مُشرَع على غرفة مضاءة — a blue-black door standing ajar onto a lit room" loading="lazy" decoding="async"></picture>
         <span class="scrim" aria-hidden="true"></span>
         <span class="lbl">
           <span class="rn"><span class="en-only">I</span><span class="ar-only">الغرفة الأولى</span></span>
@@ -821,7 +824,7 @@
     </details>
     <details class="dr">
       <summary>
-        <picture><source type="image/webp" srcset="images/room-2.webp"><img class="face" src="images/room-2.jpg" width="510" height="905" alt="باب أخضر مُشرَع على مجلس مضاء — a green door standing ajar onto a lit majlis" loading="lazy" decoding="async"></picture>
+        <picture><source type="image/webp" srcset="images/room-2-820.webp 820w, images/room-2-1240.webp 1240w" sizes="(max-width:900px) 92vw, 660px"><img class="face" src="images/room-2.jpg" width="510" height="905" alt="باب أخضر مُشرَع على مجلس مضاء — a green door standing ajar onto a lit majlis" loading="lazy" decoding="async"></picture>
         <span class="scrim" aria-hidden="true"></span>
         <span class="lbl">
           <span class="rn"><span class="en-only">II</span><span class="ar-only">الغرفة الثانية</span></span>
@@ -838,7 +841,7 @@
     </details>
     <details class="dr">
       <summary>
-        <picture><source type="image/webp" srcset="images/room-3.webp"><img class="face" src="images/room-3.jpg" width="491" height="905" alt="باب من خشب الجوز مُشرَع على مكتب مضاء — a walnut door standing ajar onto a lit study" loading="lazy" decoding="async"></picture>
+        <picture><source type="image/webp" srcset="images/room-3-820.webp 820w, images/room-3-1240.webp 1240w" sizes="(max-width:900px) 92vw, 660px"><img class="face" src="images/room-3.jpg" width="491" height="905" alt="باب من خشب الجوز مُشرَع على مكتب مضاء — a walnut door standing ajar onto a lit study" loading="lazy" decoding="async"></picture>
         <span class="scrim" aria-hidden="true"></span>
         <span class="lbl">
           <span class="rn"><span class="en-only">III</span><span class="ar-only">الغرفة الثالثة</span></span>

@@ -22,6 +22,7 @@
 {"@context":"https://schema.org","@type":"ProfessionalService","name":"Dar Qash — دار قاش","legalName":"Dar Qash L.L.C","identifier":"7052329658","url":"https://www.darqash.com/","email":"info@darqash.com","telephone":"+966546117177","address":{"@type":"PostalAddress","addressLocality":"Riyadh","addressCountry":"SA"},"areaServed":"SA","knowsLanguage":["ar","en"],"slogan":"We don’t just open doors — we position you in the right rooms.","description":"Saudi strategic-relations and business services firm: communications, commercial and real-estate brokerage, market entry, and confidential representation."}
 </script>
 
+<link rel="preload" as="image" href="images/hero-doors.webp" type="image/webp" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Instrument+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400&family=Reem+Kufi:wght@400;500&family=Noto+Kufi+Arabic:wght@400&display=swap" rel="stylesheet">
@@ -222,7 +223,7 @@
     text-align:end;line-height:2;opacity:0;animation:rise 1s var(--t4,.9s) forwards;
   }
   html[dir="rtl"] .hero .meta{font-family:var(--ar-body);letter-spacing:.05em}
-  html.first-visit{--t1:1.5s;--t2:1.7s;--t3:2.1s;--t4:2.4s}
+  :root{--t1:.12s;--t2:.2s;--t3:.3s;--t4:.4s}
   @keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
   @keyframes fade{to{opacity:1}}
   @media (prefers-reduced-motion:reduce){
@@ -377,7 +378,7 @@
 
   /* ====== why ====== */
   .why{background:var(--night-2);position:relative;overflow:hidden}
-  .why::before{content:"";position:absolute;inset:0;background:url(images/texture-slate.jpg) center/cover;opacity:.45;pointer-events:none}
+  .why::before{content:"";position:absolute;inset:0;background:url(images/grain.png) center/cover;opacity:.45;pointer-events:none}
   .why > *{position:relative;z-index:1}
   .why ol{list-style:none;counter-reset:w;max-width:820px}
   .why li{
@@ -782,6 +783,7 @@
   // Doors open once per browser session. Later visits load straight into the hero.
   (function(){
     try{
+      if(false){   /* intro disabled: it read as a hang on a page opened repeatedly for review */
       if(!sessionStorage.getItem('dq_doors') && !matchMedia('(prefers-reduced-motion: reduce)').matches){
         document.documentElement.classList.add('first-visit');
         var pl=document.createElement('link');pl.rel='preload';pl.as='image';pl.href='images/doors-limestone.jpg';document.head.appendChild(pl);
@@ -796,6 +798,7 @@
         };
         document.addEventListener('DOMContentLoaded',fit);
         setTimeout(()=>document.querySelectorAll('.door,.door-seam').forEach(d=>d.remove()),2600);
+      }
       }
     }catch(e){}
   })();
@@ -878,7 +881,7 @@
 
       <details class="door-card door-room" id="room-relations">
         <summary>
-          <picture class="door-img"><source type="image/webp" srcset="images/room-1.webp"><img src="images/room-1.jpg" width="485" height="905" alt="" loading="lazy" decoding="async"></picture>
+          <picture class="door-img"><source type="image/webp" srcset="images/room-1-820.webp 820w, images/room-1-1240.webp 1240w" sizes="(max-width:900px) 92vw, 660px"><img src="images/room-1.jpg" width="485" height="905" alt="" loading="lazy" decoding="async"></picture>
           <span class="face">
             <span class="rn" aria-hidden="true">I</span>
             <h3><span class="en-only">Relations &amp; Representation</span><span class="ar-only">العلاقات والتمثيل</span></h3>
@@ -896,7 +899,7 @@
 
       <details class="door-card door-room" id="room-brokerage">
         <summary>
-          <picture class="door-img"><source type="image/webp" srcset="images/room-2.webp"><img src="images/room-2.jpg" width="510" height="905" alt="" loading="lazy" decoding="async"></picture>
+          <picture class="door-img"><source type="image/webp" srcset="images/room-2-820.webp 820w, images/room-2-1240.webp 1240w" sizes="(max-width:900px) 92vw, 660px"><img src="images/room-2.jpg" width="510" height="905" alt="" loading="lazy" decoding="async"></picture>
           <span class="face">
             <span class="rn" aria-hidden="true">II</span>
             <h3><span class="en-only">Brokerage &amp; Deal Facilitation</span><span class="ar-only">الوساطة وتسهيل الصفقات</span></h3>
@@ -914,7 +917,7 @@
 
       <details class="door-card door-room" id="room-growth">
         <summary>
-          <picture class="door-img"><source type="image/webp" srcset="images/room-3.webp"><img src="images/room-3.jpg" width="491" height="905" alt="" loading="lazy" decoding="async"></picture>
+          <picture class="door-img"><source type="image/webp" srcset="images/room-3-820.webp 820w, images/room-3-1240.webp 1240w" sizes="(max-width:900px) 92vw, 660px"><img src="images/room-3.jpg" width="491" height="905" alt="" loading="lazy" decoding="async"></picture>
           <span class="face">
             <span class="rn" aria-hidden="true">III</span>
             <h3><span class="en-only">Growth &amp; Market Entry</span><span class="ar-only">النمو ودخول السوق</span></h3>
