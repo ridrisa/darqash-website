@@ -743,6 +743,12 @@
   
   main > section{content-visibility:auto;contain-intrinsic-size:auto 700px}
   main > section.hero,main > section:target{content-visibility:visible}
+  
+  /* the room behind: landscape scenes in a tall aperture. Anchor high while
+     the door is shut so the lit depth of the room is what shows through the
+     gap, then settle to centre as the column widens on open. */
+  .dr-room img{object-position:center 46%}
+  .dr.open .dr-room img{object-position:center 52%;transform:scale(1.02)}
   </style>
 <noscript><style>
   .rv,.stagger>*,.w,.mask>.ln,.fig img,.vision .bg img,.approach .bg img,.hero-img img,.hero h1,.hero .sub,.hero .kicker,.hero .meta{opacity:1!important;transform:none!important;animation:none!important}
@@ -896,7 +902,7 @@
         <div class="door-col">
           <div class="dr" role="button" tabindex="0" aria-expanded="false" data-door="0" data-row="0">
             <div class="dr-room">
-              <picture><source type="image/webp" srcset="images/room-1-820.webp"><img src="images/room-1.jpg" width="820" height="1230" alt="" loading="lazy" decoding="async"></picture>
+              <picture><source type="image/webp" srcset="images/dq-room.webp"><img src="images/dq-room.jpg" width="1400" height="933" alt="" loading="lazy" decoding="async"></picture>
               <span class="dr-scrim" aria-hidden="true"></span>
               <div class="dr-inner">
                 <span class="dr-n"><span class="en-only">01</span><span class="ar-only">٠١</span></span>
@@ -920,7 +926,7 @@
         <div class="door-col">
           <div class="dr" role="button" tabindex="0" aria-expanded="false" data-door="1" data-row="0">
             <div class="dr-room">
-              <picture><source type="image/webp" srcset="images/room-1-820.webp"><img src="images/room-1.jpg" width="820" height="1230" alt="" loading="lazy" decoding="async"></picture>
+              <picture><source type="image/webp" srcset="images/dq-room.webp"><img src="images/dq-room.jpg" width="1400" height="933" alt="" loading="lazy" decoding="async"></picture>
               <span class="dr-scrim" aria-hidden="true"></span>
               <div class="dr-inner">
                 <span class="dr-n"><span class="en-only">02</span><span class="ar-only">٠٢</span></span>
@@ -944,7 +950,7 @@
         <div class="door-col">
           <div class="dr" role="button" tabindex="0" aria-expanded="false" data-door="2" data-row="0">
             <div class="dr-room">
-              <picture><source type="image/webp" srcset="images/room-1-820.webp"><img src="images/room-1.jpg" width="820" height="1230" alt="" loading="lazy" decoding="async"></picture>
+              <picture><source type="image/webp" srcset="images/dq-room.webp"><img src="images/dq-room.jpg" width="1400" height="933" alt="" loading="lazy" decoding="async"></picture>
               <span class="dr-scrim" aria-hidden="true"></span>
               <div class="dr-inner">
                 <span class="dr-n"><span class="en-only">03</span><span class="ar-only">٠٣</span></span>
@@ -968,7 +974,7 @@
         <div class="door-col">
           <div class="dr" role="button" tabindex="0" aria-expanded="false" data-door="3" data-row="0">
             <div class="dr-room">
-              <picture><source type="image/webp" srcset="images/room-2-820.webp"><img src="images/room-2.jpg" width="820" height="1230" alt="" loading="lazy" decoding="async"></picture>
+              <picture><source type="image/webp" srcset="images/dq-courtyard.webp"><img src="images/dq-courtyard.jpg" width="1400" height="933" alt="" loading="lazy" decoding="async"></picture>
               <span class="dr-scrim" aria-hidden="true"></span>
               <div class="dr-inner">
                 <span class="dr-n"><span class="en-only">04</span><span class="ar-only">٠٤</span></span>
@@ -1002,7 +1008,7 @@
         <div class="door-col">
           <div class="dr" role="button" tabindex="0" aria-expanded="false" data-door="4" data-row="1">
             <div class="dr-room">
-              <picture><source type="image/webp" srcset="images/room-2-820.webp"><img src="images/room-2.jpg" width="820" height="1230" alt="" loading="lazy" decoding="async"></picture>
+              <picture><source type="image/webp" srcset="images/dq-courtyard.webp"><img src="images/dq-courtyard.jpg" width="1400" height="933" alt="" loading="lazy" decoding="async"></picture>
               <span class="dr-scrim" aria-hidden="true"></span>
               <div class="dr-inner">
                 <span class="dr-n"><span class="en-only">05</span><span class="ar-only">٠٥</span></span>
@@ -1026,7 +1032,7 @@
         <div class="door-col">
           <div class="dr" role="button" tabindex="0" aria-expanded="false" data-door="5" data-row="1">
             <div class="dr-room">
-              <picture><source type="image/webp" srcset="images/room-2-820.webp"><img src="images/room-2.jpg" width="820" height="1230" alt="" loading="lazy" decoding="async"></picture>
+              <picture><source type="image/webp" srcset="images/dq-courtyard.webp"><img src="images/dq-courtyard.jpg" width="1400" height="933" alt="" loading="lazy" decoding="async"></picture>
               <span class="dr-scrim" aria-hidden="true"></span>
               <div class="dr-inner">
                 <span class="dr-n"><span class="en-only">06</span><span class="ar-only">٠٦</span></span>
@@ -1050,7 +1056,7 @@
         <div class="door-col">
           <div class="dr" role="button" tabindex="0" aria-expanded="false" data-door="6" data-row="1">
             <div class="dr-room">
-              <picture><source type="image/webp" srcset="images/room-3-820.webp"><img src="images/room-3.jpg" width="820" height="1230" alt="" loading="lazy" decoding="async"></picture>
+              <picture><source type="image/webp" srcset="images/dq-arcade.webp"><img src="images/dq-arcade.jpg" width="1400" height="933" alt="" loading="lazy" decoding="async"></picture>
               <span class="dr-scrim" aria-hidden="true"></span>
               <div class="dr-inner">
                 <span class="dr-n"><span class="en-only">07</span><span class="ar-only">٠٧</span></span>
@@ -1074,7 +1080,7 @@
         <div class="door-col">
           <div class="dr" role="button" tabindex="0" aria-expanded="false" data-door="7" data-row="1">
             <div class="dr-room">
-              <picture><source type="image/webp" srcset="images/room-3-820.webp"><img src="images/room-3.jpg" width="820" height="1230" alt="" loading="lazy" decoding="async"></picture>
+              <picture><source type="image/webp" srcset="images/dq-arcade.webp"><img src="images/dq-arcade.jpg" width="1400" height="933" alt="" loading="lazy" decoding="async"></picture>
               <span class="dr-scrim" aria-hidden="true"></span>
               <div class="dr-inner">
                 <span class="dr-n"><span class="en-only">08</span><span class="ar-only">٠٨</span></span>
