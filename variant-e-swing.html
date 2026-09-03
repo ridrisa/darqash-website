@@ -756,6 +756,12 @@
   /* same fit rule as variant F: landscape interior in a tall aperture */
   .room img{object-position:center 46%}
   .leafwrap.open .room img{object-position:center 52%}
+  
+  /* handle belongs on the free edge, never on the hinge.
+     LTR hinges at the left, so the face is mirrored; RTL hinges at the
+     right, where the photograph's own handle already falls correctly. */
+  .leaf::before{transform:scaleX(-1)}
+  html[dir="rtl"] .leaf::before{transform:none}
   </style>
 <noscript><style>
   .rv,.stagger>*,.w,.mask>.ln,.fig img,.vision .bg img,.approach .bg img,.hero-img img,.hero h1,.hero .sub,.hero .kicker,.hero .meta{opacity:1!important;transform:none!important;animation:none!important}

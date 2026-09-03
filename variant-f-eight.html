@@ -223,7 +223,7 @@
     text-align:end;line-height:2;opacity:0;animation:rise 1s var(--t4,.9s) forwards;
   }
   html[dir="rtl"] .hero .meta{font-family:var(--ar-body);letter-spacing:.05em}
-  :root{--t1:.12s;--t2:.2s;--t3:.3s;--t4:.4s}
+  html.first-visit{--t1:1.5s;--t2:1.7s;--t3:2.1s;--t4:2.4s}
   @keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
   @keyframes fade{to{opacity:1}}
   @media (prefers-reduced-motion:reduce){
@@ -693,7 +693,8 @@
   html[dir="rtl"] .dr-leaf{transform-origin:right center}
   .dr-leaf img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 55%;
     filter:saturate(.9) contrast(1.02)}
-  html[dir="rtl"] .dr-leaf img{transform:scaleX(-1)}
+  .dr-leaf img{transform:scaleX(-1)}
+  html[dir="rtl"] .dr-leaf img{transform:none}
   .dr-leaf-top{position:absolute;inset:0;pointer-events:none;
     background:linear-gradient(180deg,rgba(20,17,15,.35),rgba(20,17,15,0) 30%,rgba(20,17,15,0) 55%,rgba(20,17,15,.92) 100%)}
   .dr-leaf-edge{position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 0 1px rgba(179,160,143,.2)}
@@ -754,7 +755,8 @@
      fills the aperture completely — a shut door shows no room behind it.
      Anchor to the hinge side so the handle stays near the free edge. */
   .dr-leaf img{object-position:center center}
-  html[dir="rtl"] .dr-leaf img{transform:scaleX(-1)}
+  .dr-leaf img{transform:scaleX(-1)}
+  html[dir="rtl"] .dr-leaf img{transform:none}
   </style>
 <noscript><style>
   .rv,.stagger>*,.w,.mask>.ln,.fig img,.vision .bg img,.approach .bg img,.hero-img img,.hero h1,.hero .sub,.hero .kicker,.hero .meta{opacity:1!important;transform:none!important;animation:none!important}
@@ -767,7 +769,6 @@
   // Doors open once per browser session. Later visits load straight into the hero.
   (function(){
     try{
-      if(false){   /* intro disabled: reads as a hang */
       if(!sessionStorage.getItem('dq_doors') && !matchMedia('(prefers-reduced-motion: reduce)').matches){
         document.documentElement.classList.add('first-visit');
         var pl=document.createElement('link');pl.rel='preload';pl.as='image';pl.href='images/doors-limestone.jpg';document.head.appendChild(pl);
@@ -782,7 +783,6 @@
         };
         document.addEventListener('DOMContentLoaded',fit);
         setTimeout(()=>document.querySelectorAll('.door,.door-seam').forEach(d=>d.remove()),2600);
-      }
       }
     }catch(e){}
   })();
@@ -942,7 +942,7 @@
             </div>
             <span class="dr-spill" aria-hidden="true"></span>
             <div class="dr-leaf">
-              <picture><source type="image/webp" srcset="images/leaf-1.webp"><img src="images/leaf-1.jpg" width="620" height="1240" alt="" loading="lazy" decoding="async"></picture>
+              <picture><source type="image/webp" srcset="images/leaf-2.webp"><img src="images/leaf-2.jpg" width="620" height="1240" alt="" loading="lazy" decoding="async"></picture>
               <span class="dr-leaf-top" aria-hidden="true"></span>
               <span class="dr-leaf-edge" aria-hidden="true"></span>
               <span class="dr-shade" aria-hidden="true"></span>
@@ -966,7 +966,7 @@
             </div>
             <span class="dr-spill" aria-hidden="true"></span>
             <div class="dr-leaf">
-              <picture><source type="image/webp" srcset="images/leaf-1.webp"><img src="images/leaf-1.jpg" width="620" height="1240" alt="" loading="lazy" decoding="async"></picture>
+              <picture><source type="image/webp" srcset="images/leaf-3.webp"><img src="images/leaf-3.jpg" width="620" height="1240" alt="" loading="lazy" decoding="async"></picture>
               <span class="dr-leaf-top" aria-hidden="true"></span>
               <span class="dr-leaf-edge" aria-hidden="true"></span>
               <span class="dr-shade" aria-hidden="true"></span>
@@ -990,7 +990,7 @@
             </div>
             <span class="dr-spill" aria-hidden="true"></span>
             <div class="dr-leaf">
-              <picture><source type="image/webp" srcset="images/leaf-2.webp"><img src="images/leaf-2.jpg" width="620" height="1240" alt="" loading="lazy" decoding="async"></picture>
+              <picture><source type="image/webp" srcset="images/leaf-4.webp"><img src="images/leaf-4.jpg" width="620" height="1240" alt="" loading="lazy" decoding="async"></picture>
               <span class="dr-leaf-top" aria-hidden="true"></span>
               <span class="dr-leaf-edge" aria-hidden="true"></span>
               <span class="dr-shade" aria-hidden="true"></span>
@@ -1024,7 +1024,7 @@
             </div>
             <span class="dr-spill" aria-hidden="true"></span>
             <div class="dr-leaf">
-              <picture><source type="image/webp" srcset="images/leaf-2.webp"><img src="images/leaf-2.jpg" width="620" height="1240" alt="" loading="lazy" decoding="async"></picture>
+              <picture><source type="image/webp" srcset="images/leaf-5.webp"><img src="images/leaf-5.jpg" width="620" height="1240" alt="" loading="lazy" decoding="async"></picture>
               <span class="dr-leaf-top" aria-hidden="true"></span>
               <span class="dr-leaf-edge" aria-hidden="true"></span>
               <span class="dr-shade" aria-hidden="true"></span>
@@ -1048,7 +1048,7 @@
             </div>
             <span class="dr-spill" aria-hidden="true"></span>
             <div class="dr-leaf">
-              <picture><source type="image/webp" srcset="images/leaf-2.webp"><img src="images/leaf-2.jpg" width="620" height="1240" alt="" loading="lazy" decoding="async"></picture>
+              <picture><source type="image/webp" srcset="images/leaf-6.webp"><img src="images/leaf-6.jpg" width="620" height="1240" alt="" loading="lazy" decoding="async"></picture>
               <span class="dr-leaf-top" aria-hidden="true"></span>
               <span class="dr-leaf-edge" aria-hidden="true"></span>
               <span class="dr-shade" aria-hidden="true"></span>
@@ -1072,7 +1072,7 @@
             </div>
             <span class="dr-spill" aria-hidden="true"></span>
             <div class="dr-leaf">
-              <picture><source type="image/webp" srcset="images/leaf-3.webp"><img src="images/leaf-3.jpg" width="620" height="1240" alt="" loading="lazy" decoding="async"></picture>
+              <picture><source type="image/webp" srcset="images/leaf-7.webp"><img src="images/leaf-7.jpg" width="620" height="1240" alt="" loading="lazy" decoding="async"></picture>
               <span class="dr-leaf-top" aria-hidden="true"></span>
               <span class="dr-leaf-edge" aria-hidden="true"></span>
               <span class="dr-shade" aria-hidden="true"></span>
@@ -1096,7 +1096,7 @@
             </div>
             <span class="dr-spill" aria-hidden="true"></span>
             <div class="dr-leaf">
-              <picture><source type="image/webp" srcset="images/leaf-3.webp"><img src="images/leaf-3.jpg" width="620" height="1240" alt="" loading="lazy" decoding="async"></picture>
+              <picture><source type="image/webp" srcset="images/leaf-8.webp"><img src="images/leaf-8.jpg" width="620" height="1240" alt="" loading="lazy" decoding="async"></picture>
               <span class="dr-leaf-top" aria-hidden="true"></span>
               <span class="dr-leaf-edge" aria-hidden="true"></span>
               <span class="dr-shade" aria-hidden="true"></span>
